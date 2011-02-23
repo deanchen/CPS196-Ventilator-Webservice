@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "rest-api";
+$route['default_controller'] = "rest";
 $route['404_override'] = '';
 
 
