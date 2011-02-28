@@ -44,5 +44,14 @@
 	</style>
 </head>
 <body>
-	<code></code>
+  <h1>How To Use the API:</h1><br/><br/>
+	Get data on a patient based on session id: <code>/rest/patient/SESSION_ID_GOES_HERE</code><br />
+	Get the end report for a patient based on session id: <code>/rest/report/SESSION_ID_GOES_HERE</code><br />
+	Validate if a session is real: <code>/rest/session/validate/SESSION_ID_GOES_HERE</code><br />
+	Get health params: <code>/rest/health_params</code><br />
+	Get survey question groups: <code>/rest/survey/groups</code><br />
+	Get survey questions of a certain group for a patient: <code>/rest/survey/questions/QUESTION_GROUP_ID_GOES_HERE/SESSION_ID_GOES_HERE</code><br />
+  Get specific patient's survey responses: <code>/rest/survey/patient/SESSION_ID_GOES_HERE</code><br />
+  Get end points for a patient's survey responses: <code>/rest/survey/points/SESSION_ID_GOES_HERE</code><br />
+  Check if survey has been completed for a specific patient: <code>/rest/survey/completed/SESSION_ID_GOES_HERE</code><br />
 </body>

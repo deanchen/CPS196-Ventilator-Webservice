@@ -5,8 +5,6 @@ class Rest extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		
-		$this->load->model('survey_model');
 	}
 
 	function index()
@@ -14,9 +12,65 @@ class Rest extends CI_Controller {
 		$this->load->view('api_docs');
 	}
 	
-	function survey_get()
-	{
-		$data = array("test_string");
-		$this->response($data);
-	}
+  function patient($sessionID)
+  {
+    $data = null;
+    $this->load->model('PatientSession'); 
+    $data = $this->PatientSession->getPatientDetails($sessionID);
+    $this->load->view('rest',array('data' => $data));
+  }
+  
+  function report($sessionID)
+  {
+    $data = null;
+    $this->load->model('PatientSession'); 
+    $data = $this->PatientSession->getReport($sessionID);
+    $this->load->view('rest',array('data' => $data));
+  }
+  
+  function health_params()
+  {
+    $data = null;
+    $this->load->model('PatientSession'); 
+    $data = $this->PatientSession->getHealthParams();
+    $this->load->view('rest',array('data' => $data));
+  }
+  
+  function survey($command,$param1 = NULL,$param2 = NULL)
+  {
+    $this->load->model('Survey'); 
+    $data = null;
+    if($command =='groups')
+    {
+      $data = $this->Survey->getSurveyQuestionGroups();
+    }
+    elseif($command =='questions')
+    {
+      $data = $this->Survey->getSurveyQuestions($param1,$param2);
+    }
+    elseif($command =='patient')
+    {
+      $data = $this->Survey->getPatientSurveyData($param1);
+    }
+    elseif($command =='points')
+    {
+      $data = $this->Survey->getSurveyReport($param1);
+    }
+    elseif($command =='completed')
+    {
+      $data = $this->Survey->isSurveyCompleted($param1);
+    }
+    $this->load->view('rest',array('data' => $data));
+  }
+  
+  function session($command,$param)
+  {
+     $this->load->model('PatientSession'); 
+     $data = null;
+     if($command == 'validate')
+     {
+       $data = $this->PatientSession->validateSession($param);
+     }
+     $this->load->view('rest',array('data' => $data));
+  }  
 }

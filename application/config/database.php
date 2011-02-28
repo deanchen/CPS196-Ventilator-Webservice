@@ -41,9 +41,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'ventilator.db';
-$db['default']['username'] = 'ventilator';
-$db['default']['password'] = 'HXyJPPSpQj3HHNNq';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'admin';
+$db['default']['password'] = 'removed!';
 $db['default']['database'] = 'ventilator';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
