@@ -1,4 +1,4 @@
 <?php
-print_r($data);
-echo "<br />".json_encode($data);
+header('Content-type: application/json');
+echo json_encode($data);
 ?>
