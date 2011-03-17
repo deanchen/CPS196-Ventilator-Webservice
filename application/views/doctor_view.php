@@ -261,7 +261,25 @@ function radio_group_val(id){
   
   </table>
 
-<p align="right" class="pagination"> <span class='pagination_txt'>Previous</span>  &nbsp; <span class=''><b>1</b></span>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=2' class='pagination_anchor' >2</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=3' class='pagination_anchor' >3</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=4' class='pagination_anchor' >4</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=5' class='pagination_anchor' >5</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=6' class='pagination_anchor' >6</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=7' class='pagination_anchor' >7</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=8' class='pagination_anchor' >8</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=9' class='pagination_anchor' >9</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=10' class='pagination_anchor' >10</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=2' class='pagination_anchor' ><b>Next</b></a></p>
+<?php if($pages > 1)
+{
+
+  echo '<p align="right" class="pagination"><a href="/doctor/view/'.($this_page_number-1).'" class="pagination_anchor"><b>Previous</b></a>';
+  
+  for($i = 1; $i <= $pages; $i ++)
+  {
+     if($i == $this_page_number)
+     {
+       echo '&nbsp;<span class=""><b>'.($i).'</b>';
+     }
+     else
+     {
+       echo '</span>&nbsp;<a href="/doctor/view/'.($i).'" class="pagination_anchor" >'.($i).'</a>';
+     }
+  }
+  
+  echo '&nbsp;<a href="/doctor/view/'.($this_page_number+1).'" class="pagination_anchor"><b>Next</b></a></p>';
+}?>
 
 <form action="http://test.teamkollab.com/pmv/index.php?p=doctor.create_patient_session" method="post" id="submit_session_form">
 

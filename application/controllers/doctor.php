@@ -12,13 +12,30 @@ class Doctor extends CI_Controller {
 		$this->load->view('doctor');
 	}
   
-  function view($searchString = NULL,$page=0)
+  function view($page=1,$searchString=NULL)
   {
+    $PAGE_SIZE = 10;
+    
+    if($page < 1)
+      {
+        $page = 1;
+      }
+    
     $this->load->model('PatientSession');  
-    $results = $this->PatientSession->getMatchingPatients($searchString,$page);
+    
+     $count = ceil($this->PatientSession->getMatchingPatientsCount($searchString)/$PAGE_SIZE);
+    
+     if($page > $count)
+      {
+        $page = $count;
+      }
+    
+    $results = $this->PatientSession->getMatchingPatients($searchString,$page,$PAGE_SIZE); 
     
     $data = array(
-          'records' => $results);
+          'records' => $results,
+          'pages' => $count,
+          'this_page_number' => $page);
           
     $this->load->view('doctor_view',$data);
   }
