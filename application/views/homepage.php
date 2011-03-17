@@ -125,11 +125,12 @@ function radio_group_val(id){
 
             <tr>
 
-              <td valign="middle" align="center" class="tab1">  <a href="/" class="active">Home</a> </td>
+              <td valign="middle" align="center" class="tab">  <a href="/" class="active">Home</a> </td>
 
-              <td valign="middle" align="center" class="tab"> <a href="/doctor/">Session ID</a> </td>
+              <td valign="middle" align="center" class="tab"> <a href="/doctor/">Add A Patient</a> </td>
 
-              <td valign="middle" align="center" class="tab3">&nbsp;</td>
+              <td valign="middle" align="center" class="tab"><a href="/doctor/view/">View Patients</a></td>
+
 
             </tr>
 

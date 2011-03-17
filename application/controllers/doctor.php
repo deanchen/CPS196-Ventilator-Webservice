@@ -12,6 +12,17 @@ class Doctor extends CI_Controller {
 		$this->load->view('doctor');
 	}
   
+  function view($searchString = NULL,$page=0)
+  {
+    $this->load->model('PatientSession');  
+    $results = $this->PatientSession->getMatchingPatients($searchString,$page);
+    
+    $data = array(
+          'records' => $results);
+          
+    $this->load->view('doctor_view',$data);
+  }
+  
   function submit()
   {
     $this->load->model('PatientSession'); 

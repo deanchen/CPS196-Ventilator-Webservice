@@ -127,10 +127,10 @@ function radio_group_val(id){
 
            <td valign="middle" align="center" class="tab">  <a href="/" >Home</a> </td>
 
-              <td valign="middle" align="center" class="tab"> <a href="/doctor/" class="active">Add A Patient</a> </td>
+              <td valign="middle" align="center" class="tab"> <a href="/doctor/">Add A Patient</a> </td>
 
-              <td valign="middle" align="center" class="tab"><a href="/doctor/view/">View Patients</a></td>
-
+              <td valign="middle" align="center" class="tab"><a href="/doctor/view/" class="active">View Patients</a></td>
+              
             </tr>
 
           </table></td>
@@ -207,29 +207,61 @@ function radio_group_val(id){
 
     <div id="workArea">       <div class="heading">
 
-  <table width="50%" border="0" cellspacing="0" cellpadding="0">
+        <table width="50%" border="0" cellspacing="0" cellpadding="0">
 
-    <tr>
+          <tr>
 
-      <td valign="top" align="left" class="hLeft">&nbsp;</td>
+            <td valign="top" align="left" class="hLeft">&nbsp;</td>
 
-      <td valign="middle" align="left" class="hRight">Success - New session ID generated</td>
+            <td valign="middle" align="left" class="hRight">Patients Added</td>
 
-    </tr>
+          </tr>
 
+        </table>
+
+      </div>
+
+    <p class="serchBox" align="right">
+
+          <input type="text" name="search_str" tabindex="1" id="search_str" onkeypress="submit_on_enter(event)" class="inputFld" value="" />
+
+          <a class="button" href="#" onclick="submit_search()" tabindex="2" onkeypress="submit_on_enter(event)"><span>Search</span></a>
+
+        </p>
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+  <tr>
+
+    <td valign="middle" align="left" class="rowHd">Patient Name</td>
+
+    <td valign="middle" align="left" class="rowHd">Session ID</td>
+
+    <td valign="middle" align="left" class="rowHd">Medical Record Number</td>
+
+    <td valign="middle" align="left" class="rowHd">Website link</td>
+
+  </tr>
+
+   <?php foreach($records as $record)
+  {           
+    echo
+    '<tr>
+  
+      <td valign="middle" align="left" class="rowFld">'. $record['name'] .'</td>
+  
+      <td valign="middle" align="left" class="rowFld">'. $record['session_id'] .'</td>
+  
+      <td valign="middle" align="left" class="rowFld">'. $record['medical_record_no'] .'</td>
+  
+      <td valign="middle" align="left" class="rowFld"><a href="#" onclick="submit_session_id(1396310985);">Click to view survey result</a></td>
+  
+    </tr>';
+    } ?>
+  
   </table>
 
-</div>
-
-<div class="indexContent">
-
-<p><strong>Session ID:</strong> <b><?php echo $id; ?></b></p>
-
-<p><strong>Website link for the Family Member:</strong> <a href="#" tabindex="1" id="user_link" onkeypress="submit_on_enter(event,1)" onclick="submit_session_id(1166530942);">http://test.teamkollab.com/pmv/index.php?p=user.welcome</a></p>
-
-<p><a href="#" class="button" onclick="window.print();" onkeypress="submit_on_enter(event,2)" tabindex="2" ><span>Print this page</span></a> </p>
-
-</div>
+<p align="right" class="pagination"> <span class='pagination_txt'>Previous</span>  &nbsp; <span class=''><b>1</b></span>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=2' class='pagination_anchor' >2</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=3' class='pagination_anchor' >3</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=4' class='pagination_anchor' >4</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=5' class='pagination_anchor' >5</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=6' class='pagination_anchor' >6</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=7' class='pagination_anchor' >7</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=8' class='pagination_anchor' >8</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=9' class='pagination_anchor' >9</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=10' class='pagination_anchor' >10</a>&nbsp;<a href='index.php?p=doctor.session_ids&pg_no=2' class='pagination_anchor' ><b>Next</b></a></p>
 
 <form action="http://test.teamkollab.com/pmv/index.php?p=doctor.create_patient_session" method="post" id="submit_session_form">
 
@@ -247,29 +279,33 @@ function submit_session_id(id){
 
 }
 
-function submit_on_enter(e,index){
+function submit_search(){
+
+  var search_str = $id("search_str").value;
+
+  var url = "http://test.teamkollab.com/pmv/index.php?p=doctor.session_ids&search_str="+search_str;
+
+  window.location = url;
+
+}
+
+function submit_on_enter(e){
 
    e = (window.event) ? window.event : e;
 
   if(e.which || e.keyCode){
 
-    if ((e.which == 13) || (e.keyCode == 13) || (e.which == 32) || (e.keyCode == 32)){
+    if ((e.which == 13) || (e.keyCode == 13) || (e.which == 32) || (e.keyCode == 32))
 
-      if(index == 1)
-
-      window.location = "http://test.teamkollab.com/pmv/index.php?p=user.welcome";
-
-      else
-
-      window.print();   
-
-    }
+    submit_search();
 
   }
 
 }
 
-$id("user_link").focus();
+$id("search_str").focus();
+
+
 
 </script>
        </div>
