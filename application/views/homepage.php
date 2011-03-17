@@ -125,9 +125,9 @@ function radio_group_val(id){
 
             <tr>
 
-              <td valign="middle" align="center" class="tab1">  <a href="/">Home</a> </td>
+              <td valign="middle" align="center" class="tab1">  <a href="/" class="active">Home</a> </td>
 
-              <td valign="middle" align="center" class="tab"> <a href="/doctor/" class="active">Session ID</a> </td>
+              <td valign="middle" align="center" class="tab"> <a href="/doctor/">Session ID</a> </td>
 
               <td valign="middle" align="center" class="tab3">&nbsp;</td>
 
@@ -207,72 +207,71 @@ function radio_group_val(id){
 
     <div id="workArea">       <div class="heading">
 
-  <table width="50%" border="0" cellspacing="0" cellpadding="0">
+        <table width="50%" border="0" cellspacing="0" cellpadding="0">
 
-    <tr>
+          <tr>
 
-      <td valign="top" align="left" class="hLeft">&nbsp;</td>
+            <td valign="top" align="left" class="hLeft">&nbsp;</td>
 
-      <td valign="middle" align="left" class="hRight">Success - New session ID generated</td>
+            <td valign="middle" align="left" class="hRight">Welcome Doctor</td>
 
-    </tr>
+          </tr>
 
-  </table>
+        </table>
 
-</div>
+      </div>
 
 <div class="indexContent">
 
-<p><strong>Session ID:</strong> <b><?php echo $id; ?></b></p>
+<div class="home_content">
 
-<p><strong>Website link for the Family Member:</strong> <a href="#" tabindex="1" id="user_link" onkeypress="submit_on_enter(event,1)" onclick="submit_session_id(1166530942);">http://test.teamkollab.com/pmv/index.php?p=user.welcome</a></p>
+<p>This web-based decision aid is being evaluated to see what effect it has on decision making for the surrogates of patients on mechanical ventilators in the intensive care unit for longer than average.</p>
 
-<p><a href="#" class="button" onclick="window.print();" onkeypress="submit_on_enter(event,2)" tabindex="2" ><span>Print this page</span></a> </p>
+
+
+<p>This is a research tool only.</p>
+
+
+
+<p>We ask that you please enter 5 clinical variables measured on patient mechanical ventilator day 14:  age, platelet count, any use of vasopressors at any dose, current need for dialysis, and whether or not the primary or secondary ICU admission diagnosis is related to trauma. </p>
+
+
+
+<p>These variables will be used to calculate the patient's prolonged mechanical ventilation prognostic score.  </p>
+
+
+
+<p>Later, the results of the decision aid will be summarized and printed for you to review.</p>
+
+
+
+<p>Thank you for your participation in this project.</p>
+
+
+
+<p><a href="/doctor/" id="generate_sess_id" onkeypress="submit_on_enter(event)" class="button"><span>Click to Generate a New Session ID</span></a></p></div>
 
 </div>
 
-<form action="http://test.teamkollab.com/pmv/index.php?p=doctor.create_patient_session" method="post" id="submit_session_form">
-
-  <input type="hidden" name="session_id" id="session_id" value=""/>
-
-</form>
-
 <script type="text/javascript">
 
-function submit_session_id(id){
+function submit_on_enter(e){
 
-  $id("session_id").value = id;
-
-  $id("submit_session_form").submit();
-
-}
-
-function submit_on_enter(e,index){
-
-   e = (window.event) ? window.event : e;
+  e = (window.event) ? window.event : e;
 
   if(e.which || e.keyCode){
 
-    if ((e.which == 13) || (e.keyCode == 13) || (e.which == 32) || (e.keyCode == 32)){
+    if ((e.which == 13) || (e.keyCode == 13) || (e.which == 32) || (e.keyCode == 32))
 
-      if(index == 1)
-
-      window.location = "http://test.teamkollab.com/pmv/index.php?p=user.welcome";
-
-      else
-
-      window.print();   
-
-    }
+    window.location = "/doctor/";
 
   }
 
 }
 
-$id("user_link").focus();
+$id("generate_sess_id").focus();
 
-</script>
-       </div>
+</script>       </div>
 
   </div>
 

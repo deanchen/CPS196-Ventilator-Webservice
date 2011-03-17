@@ -7,7 +7,7 @@
 
 <title>PMV Decision Aid Tool</title>
 
-<link href="http://test.teamkollab.com/pmv/themes/default/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/css/styles.css" rel="stylesheet" type="text/css" />
 
 <style>
 
@@ -52,10 +52,6 @@
 <![endif]-->
 
 <script type="text/javascript">
-
-var THEME_PATH = 'http://test.teamkollab.com/pmv/themes/default/';
-
-var ROOT_PATH = 'http://test.teamkollab.com/pmv/';
 
 function $id(id){ 
 
@@ -113,7 +109,7 @@ function radio_group_val(id){
 
   <div id="header">
 
-    <div id="logo"><img src="http://test.teamkollab.com/pmv/themes/default/images/logo.jpg" width="285" height="20" alt="Logo" /></div>
+    <div id="logo"><img src="/images/logo.jpg" width="285" height="20" alt="Logo" /></div>
 
   </div>
 
@@ -129,9 +125,9 @@ function radio_group_val(id){
 
             <tr>
 
-              <td valign="middle" align="center" class="tab1">  <a href="http://test.teamkollab.com/pmv/index.php?p=doctor.home">Home</a> </td>
+              <td valign="middle" align="center" class="tab1">  <a href="/">Home</a> </td>
 
-              <td valign="middle" align="center" class="tab"> <a href="http://test.teamkollab.com/pmv/index.php?p=doctor.session_ids" class="active">Session ID</a> </td>
+              <td valign="middle" align="center" class="tab"> <a href="/doctor/" class="active">Session ID</a> </td>
 
               <td valign="middle" align="center" class="tab3">&nbsp;</td>
 
@@ -209,7 +205,7 @@ function radio_group_val(id){
 
   <div id="contentPanel3">
 
-    <div id="workArea">       <form action="doctor/submit/" method="post" name="patient_details_form" id="patient_details_form" onsubmit="validate();">
+    <div id="workArea">       <form action="/doctor/submit/" method="post" name="patient_details_form" id="patient_details_form" onsubmit="validate();">
 
   <div class="heading">
 

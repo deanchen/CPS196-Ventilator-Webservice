@@ -46,7 +46,7 @@
 <body>
   <h1>How To Use the API:</h1><br/><br/>
 	Get data on a patient based on session id: <code>/rest/patient/SESSION_ID_GOES_HERE</code><br />
-	Get the end report for a patient based on session id: <code>/rest/report/SESSION_ID_GOES_HERE</code><br />
+	Get the end percentages for a patient's survival based on session id: <code>/rest/report/SESSION_ID_GOES_HERE</code><br />
 	Validate if a session is real: <code>/rest/session/validate/SESSION_ID_GOES_HERE</code><br />
 	Get health params: <code>/rest/health_params</code><br />
 	Get survey question groups: <code>/rest/survey/groups</code><br />
