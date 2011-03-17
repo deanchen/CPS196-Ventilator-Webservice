@@ -17,6 +17,8 @@ class Doctor extends CI_Controller {
     $PAGE_SIZE = 10;
     
     $this->load->model('PatientSession');  
+	
+	$searchString = str_replace('-', ' ', $searchString);
     
      $count = ceil($this->PatientSession->getMatchingPatientsCount($searchString)/$PAGE_SIZE);
     

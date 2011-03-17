@@ -271,8 +271,16 @@ function radio_group_val(id){
 
 <?php if($pages > 1)
 {
-
-  echo '<p align="right" class="pagination"><a href="/doctor/view/'.($this_page_number-1).'" class="pagination_anchor"><b>Previous</b></a>';
+	if($searchString != NULL)
+	{
+		$search_str = '/'.$searchString;
+	}
+	else
+	{
+		$search_str = '';
+	}
+	
+  echo '<p align="right" class="pagination"><a href="/doctor/view/'.($this_page_number-1).$search_str.'" class="pagination_anchor"><b>Previous</b></a>';
   
   for($i = 1; $i <= $pages; $i ++)
   {
@@ -282,11 +290,11 @@ function radio_group_val(id){
      }
      else
      {
-       echo '</span>&nbsp;<a href="/doctor/view/'.($i).'" class="pagination_anchor" >'.($i).'</a>';
+       echo '</span>&nbsp;<a href="/doctor/view/'.($i).$search_str.'" class="pagination_anchor" >'.($i).'</a>';
      }
   }
   
-  echo '&nbsp;<a href="/doctor/view/'.($this_page_number+1).'" class="pagination_anchor"><b>Next</b></a></p>';
+  echo '&nbsp;<a href="/doctor/view/'.($this_page_number+1).$search_str.'" class="pagination_anchor"><b>Next</b></a></p>';
 }?>
 
 <form action="http://test.teamkollab.com/pmv/index.php?p=doctor.create_patient_session" method="post" id="submit_session_form">
@@ -301,10 +309,14 @@ function submit_search(){
 
   var search_str = $id("search_str").value;
 
-  var url = "/doctor/view/1/"+search_str;
+  var url = "/doctor/view/1/"+urlencode(search_str);
 
   window.location = url;
 
+}
+
+function urlencode(str) {
+return escape(str).replace(/\+/g,'%2B').replace(/%20/g, '-').replace(/\*/g, '%2A').replace(/\//g, '%2F').replace(/@/g, '%40');
 }
 
 function submit_on_enter(e){
@@ -313,7 +325,7 @@ function submit_on_enter(e){
 
   if(e.which || e.keyCode){
 
-    if ((e.which == 13) || (e.keyCode == 13) || (e.which == 32) || (e.keyCode == 32))
+    if ((e.which == 13) || (e.keyCode == 13))
 
     submit_search();
 
