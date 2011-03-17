@@ -16,11 +16,6 @@ class Doctor extends CI_Controller {
   {
     $PAGE_SIZE = 10;
     
-    if($page < 1)
-      {
-        $page = 1;
-      }
-    
     $this->load->model('PatientSession');  
     
      $count = ceil($this->PatientSession->getMatchingPatientsCount($searchString)/$PAGE_SIZE);
@@ -29,13 +24,19 @@ class Doctor extends CI_Controller {
       {
         $page = $count;
       }
+	  
+	  if($page < 1)
+      {
+        $page = 1;
+      }
     
     $results = $this->PatientSession->getMatchingPatients($searchString,$page,$PAGE_SIZE); 
     
     $data = array(
           'records' => $results,
           'pages' => $count,
-          'this_page_number' => $page);
+          'this_page_number' => $page,
+		  'searchString' => $searchString);
           
     $this->load->view('doctor_view',$data);
   }

@@ -223,7 +223,7 @@ function radio_group_val(id){
 
     <p class="serchBox" align="right">
 
-          <input type="text" name="search_str" tabindex="1" id="search_str" onkeypress="submit_on_enter(event)" class="inputFld" value="" />
+          <input type="text" name="search_str" tabindex="1" id="search_str" onkeypress="submit_on_enter(event)" class="inputFld" value="<?php echo $searchString; ?>" />
 
           <a class="button" href="#" onclick="submit_search()" tabindex="2" onkeypress="submit_on_enter(event)"><span>Search</span></a>
 
@@ -254,9 +254,17 @@ function radio_group_val(id){
   
       <td valign="middle" align="left" class="rowFld">'. $record['medical_record_no'] .'</td>
   
-      <td valign="middle" align="left" class="rowFld"><a href="#" onclick="submit_session_id(1396310985);">Click to view survey result</a></td>
-  
-    </tr>';
+      <td valign="middle" align="left" class="rowFld">';
+      
+      if($record['survey_completed'])
+      {
+         echo '<a href="/doctor/patient/'.$record['session_id'].'">Click to view survey result</a>';
+      }
+      else
+      {
+        echo 'Survey not finished yet';    
+      }
+      echo '</td></tr>';
     } ?>
   
   </table>
@@ -289,19 +297,11 @@ function radio_group_val(id){
 
 <script type="text/javascript">
 
-function submit_session_id(id){
-
-  $id("session_id").value = id;
-
-  $id("submit_session_form").submit();
-
-}
-
 function submit_search(){
 
   var search_str = $id("search_str").value;
 
-  var url = "http://test.teamkollab.com/pmv/index.php?p=doctor.session_ids&search_str="+search_str;
+  var url = "/doctor/view/1/"+search_str;
 
   window.location = url;
 

@@ -44,7 +44,19 @@
     
     public function getMatchingPatients($searchString,$page,$records_per_page=10){
         $this->load->database();
-        $query = $this->db->query("SELECT session_id,name,medical_record_no,survey_completed FROM tbl_patient_sessions LIMIT " . $records_per_page . " OFFSET ". $records_per_page*($page-1));
+        
+        if($searchString == NULL)
+        {
+            $where = ' ';
+        }
+        else
+        {
+            $where = ' WHERE name LIKE \'%'.$searchString.'%\' OR medical_record_no LIKE \'%'.$searchString.'%\' ';
+        }
+        
+        $query = $this->db->query("SELECT session_id,name,medical_record_no,survey_completed FROM tbl_patient_sessions"
+        .$where.
+        "LIMIT " . $records_per_page . " OFFSET ". $records_per_page*($page-1));
         
         if($query->num_rows() > 0){
           $res = $query->result_array();
@@ -59,7 +71,16 @@
     {
         $this->load->database();
         
-        $res_params_cnt = $this->db->query("SELECT count(*) AS cnt FROM tbl_patient_sessions");
+        if($searchString == NULL)
+        {
+            $where = ' ';
+        }
+        else
+        {
+            $where = ' WHERE name LIKE \'%'.$searchString.'%\' OR medical_record_no LIKE \'%'.$searchString.'%\' ';
+        }
+        
+        $res_params_cnt = $this->db->query("SELECT count(*) AS cnt FROM tbl_patient_sessions" . $where);
         $res_params_cnt = $res_params_cnt->row_array();
         $num_records = $res_params_cnt['cnt'];
         
