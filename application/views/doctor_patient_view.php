@@ -91,25 +91,13 @@ function radio_group_val(id){
 
 <body>
 
-<div class="ieDiv">
-
-  <h1><strong>You are using older version of Internet Explorer. <br/>
-
-    <br/>
-
-    Please upgrade your browser <br/>
-
-    <br/>
-
-    or use mozilla, chrome or any other browser</strong></h1>
-
-</div>
+<div class="ieDiv"><h1><strong>You are using older version of Internet Explorer. <br/><br/>Please upgrade your browser <br/><br/>or use mozilla, chrome or any other browser</strong></h1></div>
 
 <div id="container" class="content_div">
 
   <div id="header">
 
-    <div id="logo"><img src="/images/logo.jpg" width="285" height="20" alt="Logo" /></div>
+    <div id="logo"><img src="http://test.teamkollab.com/pmv/themes/default/images/logo.jpg" width="285" height="20" alt="Logo" /></div>
 
   </div>
 
@@ -125,13 +113,12 @@ function radio_group_val(id){
 
             <tr>
 
-              <td valign="middle" align="center" class="tab">  <a href="/" class="active">Home</a> </td>
+           <td valign="middle" align="center" class="tab">  <a href="/" >Home</a> </td>
 
               <td valign="middle" align="center" class="tab"> <a href="/doctor/">Add A Patient</a> </td>
 
               <td valign="middle" align="center" class="tab"><a href="/doctor/view/">View Patients</a></td>
-
-
+              
             </tr>
 
           </table></td>
@@ -141,7 +128,7 @@ function radio_group_val(id){
       </tr>
 
     </table>
-
+    
     <div id="menuContent">
 
       <div id="tabContent"></div>
@@ -206,73 +193,102 @@ function radio_group_val(id){
 
   <div id="contentPanel3">
 
-    <div id="workArea">       <div class="heading">
+    <div id="workArea"> 	      <table cellpadding="0" cellspacing="0" border="0" width="100%">
 
-        <table width="50%" border="0" cellspacing="0" cellpadding="0">
+<tr><td valign="top" height="10px">
 
-          <tr>
+<div class="alert">
 
-            <td valign="top" align="left" class="hLeft">&nbsp;</td>
+  <p>This figure shows what direction the patient's family may be leaning in their decision about treatment goals for their loved one.</p>
 
-            <td valign="middle" align="left" class="hRight">Welcome Doctor</td>
+  <p>On the far left side of the line below is comfort care. The far right represents doing everything possible for survival.</p>
 
-          </tr>
-
-        </table>
-
-      </div>
-
-<div class="indexContent">
-
-<div class="home_content">
-
-<p>This web-based decision aid is being evaluated to see what effect it has on decision making for the surrogates of patients on mechanical ventilators in the intensive care unit for longer than average.</p>
-
-
-
-<p>This is a research tool only.</p>
-
-
-
-<p>We ask that you please enter 5 clinical variables measured on patient mechanical ventilator day 14:  age, platelet count, any use of vasopressors at any dose, current need for dialysis, and whether or not the primary or secondary ICU admission diagnosis is related to trauma. </p>
-
-
-
-<p>These variables will be used to calculate the patient's prolonged mechanical ventilation prognostic score.  </p>
-
-
-
-<p>Later, the results of the decision aid will be summarized and printed for you to review.</p>
-
-
-
-<p>Thank you for your participation in this project.</p>
-
-
-
-<p><a href="/doctor/" id="generate_sess_id" onkeypress="submit_on_enter(event)" class="button"><span>Add A Patient</span></a></p></div>
+  <p>The BLUE TRIANGLE on the line shows where they might be leaning based on their answers to the survey questions.</p>
 
 </div>
 
+</td></tr>
+
+<tr><td valign="middle" style="text-align:center;" id="temp_div">
+
+<div  id="slider-div">
+
+  <div id="slider"> </div>
+
+  <img src="http://test.teamkollab.com/pmv/themes/default/images/arrow.png" id="slider_arrow"  />
+
+  <div id="sliderArrow"></div>
+
+</div>
+
+<div id="sliderSteps">
+
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+
+    <tr>
+
+      <td valign="top" align="left" colspan="3"></td>
+
+    </tr>
+
+    <tr>
+
+      <td valign="top" align="left" width="25%">Comfort</td>
+
+      <td valign="top" align="center">Survival but no <br/>
+
+        prolonged life support</td>
+
+      <td valign="top" align="right" width="25%">Survival at All Cost</td>
+
+    </tr>
+
+  </table>
+
+</div>
+
+</td></tr>
+
+<tr><td>
+
+<div align="right" style="float:right; margin-right:25px">
+
+  <p> <a href="javascript:void(0);" class="button" target="_blank" onclick="window.open('/doctor/printt/<?php echo $sessionID; ?>','','scrollbars=1');return false;"><span>Print All Results</span></a></p>
+
+</div>
+
+</td></tr></table>
+
 <script type="text/javascript">
 
-function submit_on_enter(e){
+var points = parseInt("<?php echo $points; ?>");
 
-  e = (window.event) ? window.event : e;
+var incr =0;
 
-  if(e.which || e.keyCode){
+if(points >= 8 && points <= 9)
 
-    if ((e.which == 13) || (e.keyCode == 13) || (e.which == 32) || (e.keyCode == 32))
+incr+=191.25;
 
-    window.location = "/doctor/";
+else if(points >=3 && points<=5)
 
-  }
+incr+=573.75;
 
-}
+else if(points <= 2)
 
-$id("generate_sess_id").focus();
+incr+=765;
 
-</script>       </div>
+else if(points >= 6 && points <= 7)
+
+incr+=382.5;
+
+$id("slider_arrow").style.left = incr+"px";
+
+
+
+document.getElementById("temp_div").style.height = (document.height-350)+"px";
+
+</script>
+      	  	   </div>
 
   </div>
 

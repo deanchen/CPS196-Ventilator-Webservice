@@ -11,6 +11,66 @@ class Doctor extends CI_Controller {
 	{
 		$this->load->view('doctor');
 	}
+	
+  function patient($sessionID)
+  {
+  	$this->load->model('Survey');  	
+	
+	$points = $this->Survey->getSurveyReport($sessionID);
+		
+  	$data = array(
+          'points' => $points,
+		  'sessionID' => $sessionID);
+          
+    $this->load->view('doctor_patient_view',$data);
+  }
+  
+  function printt($sessionID)
+  {
+  	$this->load->model('Survey');  	
+	$survey_obj = $this->Survey;
+	
+	$result = $survey_obj->getSurveyQuestionGroups();
+	if(gettype($result) == 'object' && get_class($result) == 'Exception')
+	{
+		$msg = $result->getMessage();
+	}
+	else
+	{
+		$groups = array();
+		foreach($result as $group)
+		{
+			$groups[$group['id']]['questions'] = $survey_obj->getSurveyQuestions($group['id'],$sessionID);
+			$groups[$group['id']]['title'] = $group['title'];
+		}
+	}
+	
+	$result = $survey_obj->getSurveyReport($sessionID);
+	if(gettype($result) == 'object' && get_class($result) == 'Exception')
+	{
+		$msg = $result->getMessage();
+	}
+	else
+	{
+		$total_points = $result;
+		$top_incr =0;
+		if($total_points >= 8 && $total_points <= 9)
+		$top_incr+=191.25;
+		else if($total_points >=3 && $total_points<=5)
+		$top_incr+=573.75;
+		else if($total_points <= 2)
+		$top_incr+=765;
+		else if($total_points >= 6 && $total_points <= 7)
+		$top_incr+=382.5;
+		$top_incr_px = $top_incr."px";
+	}
+		
+  	$data = array(
+          'groups' => $groups,
+		  'top_incr_px' => $top_incr_px);
+          
+    $this->load->view('doctor_print_patient_results',$data);
+  }
   
   function view($page=1,$searchString=NULL)
   {

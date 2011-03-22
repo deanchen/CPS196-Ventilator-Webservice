@@ -243,18 +243,29 @@ function radio_group_val(id){
 
   </tr>
 
-   <?php foreach($records as $record)
-  {           
+   <?php 
+  $i = '2';
+  foreach($records as $record)
+  {
+    if($i == '2')
+	{
+		$i = '';
+	}
+	else
+	{
+		$i = '2';		
+	}	
+		           
     echo
     '<tr>
   
-      <td valign="middle" align="left" class="rowFld">'. $record['name'] .'</td>
+      <td valign="middle" align="left" class="rowFld'.$i.'">'. $record['name'] .'</td>
   
-      <td valign="middle" align="left" class="rowFld">'. $record['session_id'] .'</td>
+      <td valign="middle" align="left" class="rowFld'.$i.'">'. $record['session_id'] .'</td>
   
-      <td valign="middle" align="left" class="rowFld">'. $record['medical_record_no'] .'</td>
+      <td valign="middle" align="left" class="rowFld'.$i.'">'. $record['medical_record_no'] .'</td>
   
-      <td valign="middle" align="left" class="rowFld">';
+      <td valign="middle" align="left" class="rowFld'.$i.'">';
       
       if($record['survey_completed'])
       {
@@ -265,7 +276,8 @@ function radio_group_val(id){
         echo 'Survey not finished yet';    
       }
       echo '</td></tr>';
-    } ?>
+  	} 
+    ?>
   
   </table>
 
