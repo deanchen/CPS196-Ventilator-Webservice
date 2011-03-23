@@ -38,27 +38,27 @@ class Rest extends CI_Controller {
   
   function survey($command,$param1 = NULL,$param2 = NULL)
   {
-    $this->load->model('Survey'); 
+    $this->load->model('survey'); 
     $data = null;
     if($command =='groups')
     {
-      $data = $this->Survey->getSurveyQuestionGroups();
+      $data = $this->survey->getSurveyQuestionGroups();
     }
     elseif($command =='questions')
     {
-      $data = $this->Survey->getSurveyQuestions($param1,$param2);
+      $data = $this->survey->getSurveyQuestions($param1,$param2);
     }
     elseif($command =='patient')
     {
-      $data = $this->Survey->getPatientSurveyData($param1);
+      $data = $this->survey->getPatientSurveyData($param1);
     }
     elseif($command =='points')
     {
-      $data = $this->Survey->getSurveyReport($param1);
+      $data = $this->survey->getSurveyReport($param1);
     }
     elseif($command =='completed')
     {
-      $data = $this->Survey->isSurveyCompleted($param1);
+      $data = $this->survey->isSurveyCompleted($param1);
     }
     $this->load->view('rest',array('data' => $data));
   }
