@@ -14,9 +14,9 @@ class Doctor extends CI_Controller {
 	
   function patient($sessionID)
   {
-  	$this->load->model('Survey');  	
+  	$this->load->model('survey');  	
 	
-	$points = $this->Survey->getSurveyReport($sessionID);
+	$points = $this->survey->getSurveyReport($sessionID);
 		
   	$data = array(
           'points' => $points,
@@ -27,8 +27,8 @@ class Doctor extends CI_Controller {
   
   function printt($sessionID)
   {
-  	$this->load->model('Survey');  	
-	$survey_obj = $this->Survey;
+  	$this->load->model('survey');  	
+	$survey_obj = $this->survey;
 	
 	$result = $survey_obj->getSurveyQuestionGroups();
 	if(gettype($result) == 'object' && get_class($result) == 'Exception')

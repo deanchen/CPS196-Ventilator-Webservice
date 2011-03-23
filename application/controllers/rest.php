@@ -14,30 +14,34 @@ class Rest extends CI_Controller {
 	
   function patient($sessionID)
   {
+  	$callback = $this->input->get('callback', NULL);
     $data = null;
     $this->load->model('patient_session'); 
     $data = $this->patient_session->getPatientDetails($sessionID);
-    $this->load->view('rest',array('data' => $data));
+    $this->load->view('rest',array('callback'=>$callback, 'data' => $data));
   }
   
   function report($sessionID)
   {
+  	$callback = $this->input->get('callback', NULL);
     $data = null;
     $this->load->model('patient_session'); 
     $data = $this->patient_session->getReport($sessionID);
-    $this->load->view('rest',array('data' => $data));
+    $this->load->view('rest',array('callback'=>$callback, 'data' => $data));
   }
   
   function health_params()
   {
+  	$callback = $this->input->get('callback', NULL);
     $data = null;
     $this->load->model('patient_session'); 
     $data = $this->patient_session->getHealthParams();
-    $this->load->view('rest',array('data' => $data));
+    $this->load->view('rest',array('callback'=>$callback, 'data' => $data));
   }
   
   function survey($command,$param1 = NULL,$param2 = NULL)
   {
+  	$callback = $this->input->get('callback', NULL);
     $this->load->model('survey'); 
     $data = null;
     if($command =='groups')
@@ -60,17 +64,18 @@ class Rest extends CI_Controller {
     {
       $data = $this->survey->isSurveyCompleted($param1);
     }
-    $this->load->view('rest',array('data' => $data));
+    $this->load->view('rest',array('callback'=>$callback, 'data' => $data));
   }
   
   function session($command,$param)
   {
+  	$callback = $this->input->get('callback', NULL);
      $this->load->model('patient_session'); 
      $data = null;
      if($command == 'validate')
      {
        $data = $this->patient_session->validateSession($param);
      }
-     $this->load->view('rest',array('data' => $data));
+     $this->load->view('rest',array('callback' => $callback, 'data' => $data));
   }  
 }
