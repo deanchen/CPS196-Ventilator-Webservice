@@ -1,6 +1,6 @@
 <?php
 
-	class PatientSession extends CI_Model 
+	class Patient_session extends CI_Model 
 	{
 		public function validateSession($session_id){
 			try{

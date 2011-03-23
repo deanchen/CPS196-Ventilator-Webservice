@@ -15,24 +15,24 @@ class Rest extends CI_Controller {
   function patient($sessionID)
   {
     $data = null;
-    $this->load->model('PatientSession'); 
-    $data = $this->PatientSession->getPatientDetails($sessionID);
+    $this->load->model('patient_session'); 
+    $data = $this->patient_session->getPatientDetails($sessionID);
     $this->load->view('rest',array('data' => $data));
   }
   
   function report($sessionID)
   {
     $data = null;
-    $this->load->model('PatientSession'); 
-    $data = $this->PatientSession->getReport($sessionID);
+    $this->load->model('patient_session'); 
+    $data = $this->patient_session->getReport($sessionID);
     $this->load->view('rest',array('data' => $data));
   }
   
   function health_params()
   {
     $data = null;
-    $this->load->model('PatientSession'); 
-    $data = $this->PatientSession->getHealthParams();
+    $this->load->model('patient_session'); 
+    $data = $this->patient_session->getHealthParams();
     $this->load->view('rest',array('data' => $data));
   }
   
@@ -65,11 +65,11 @@ class Rest extends CI_Controller {
   
   function session($command,$param)
   {
-     $this->load->model('PatientSession'); 
+     $this->load->model('patient_session'); 
      $data = null;
      if($command == 'validate')
      {
-       $data = $this->PatientSession->validateSession($param);
+       $data = $this->patient_session->validateSession($param);
      }
      $this->load->view('rest',array('data' => $data));
   }  

@@ -76,11 +76,11 @@ class Doctor extends CI_Controller {
   {
     $PAGE_SIZE = 10;
     
-    $this->load->model('PatientSession');  
+    $this->load->model('patient_session');  
 	
 	$searchString = str_replace('-', ' ', $searchString);
     
-     $count = ceil($this->PatientSession->getMatchingPatientsCount($searchString)/$PAGE_SIZE);
+     $count = ceil($this->patient_session->getMatchingPatientsCount($searchString)/$PAGE_SIZE);
     
      if($page > $count)
       {
@@ -92,7 +92,7 @@ class Doctor extends CI_Controller {
         $page = 1;
       }
     
-    $results = $this->PatientSession->getMatchingPatients($searchString,$page,$PAGE_SIZE); 
+    $results = $this->patient_session->getMatchingPatients($searchString,$page,$PAGE_SIZE); 
     
     $data = array(
           'records' => $results,
@@ -105,8 +105,8 @@ class Doctor extends CI_Controller {
   
   function submit()
   {
-    $this->load->model('PatientSession'); 
-    $id = $this->PatientSession->generateSession($_POST['params']);
+    $this->load->model('patient_session'); 
+    $id = $this->patient_session->generateSession($_POST['params']);
    
    $data = array(
           'id' => $id);
