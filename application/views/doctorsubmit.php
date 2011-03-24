@@ -225,7 +225,7 @@ function radio_group_val(id){
 
 <p><strong>Session ID:</strong> <b><?php echo $id; ?></b></p>
 
-<p><strong>Website link for the Family Member:</strong> <a href="#" tabindex="1" id="user_link" onkeypress="submit_on_enter(event,1)" onclick="submit_session_id(1166530942);">http://test.teamkollab.com/pmv/index.php?p=user.welcome</a></p>
+<p>Please enter this session id on the iPad device to allow the patient's family to use the ventilator app.</p>
 
 <p><a href="#" class="button" onclick="window.print();" onkeypress="submit_on_enter(event,2)" tabindex="2" ><span>Print this page</span></a> </p>
 

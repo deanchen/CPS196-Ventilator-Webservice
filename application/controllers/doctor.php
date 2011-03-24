@@ -25,7 +25,7 @@ class Doctor extends CI_Controller {
     $this->load->view('doctor_patient_view',$data);
   }
   
-  function printt($sessionID)
+  function patient_answers($sessionID)
   {
   	$this->load->model('survey');  	
 	$survey_obj = $this->survey;

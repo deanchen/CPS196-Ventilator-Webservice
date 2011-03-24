@@ -117,18 +117,18 @@
 		
 		public function setSurveyResult($session_id,$question_id,$selected_option_id){
 		  $this->load->database();
-		  $res = $this->db->query("SELECT * FROM tbl_patient_survey_data WHERE session_id='".$session_id."' AND question_id='".$question_id."'");
+		  $res = $this->db->query("DELETE FROM tbl_patient_survey_data WHERE session_id='".$session_id."' AND question_id='".$question_id."'");
 			
-		  if($res->num_rows() > 0)
-		  $this->db->query("UPDATE tbl_patient_survey_data SET selected_option_id= '".$selected_option_id."', updated_at=NOW() WHERE session_id='".$session_id."' AND question_id='".$question_id."'");
-		  else
-		  $this->db->query("INSERT INTO tbl_patient_survey_data (session_id, question_id, selected_option_id, created_at) VALUES ('".$session_id."', '".$question_id."', '".$selected_option_id."', NOW())");
+		  foreach(explode(',',$selected_option_id) as $selected_option)
+		  $this->db->query("INSERT INTO tbl_patient_survey_data (session_id, question_id, selected_option_id, updated_at) VALUES ('".$session_id."', '".$question_id."', '".$selected_option."', NOW())");
+		  return true;
 		}
 		
 		public function setSurveyCompleted($session_id)
 		{
 		  $this->load->database();		
 		  $this->db->query("UPDATE tbl_patient_sessions SET survey_completed=1 WHERE session_id = '".$session_id."' ");
+		  return true;
 		}
 	}
 	

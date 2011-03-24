@@ -53,5 +53,15 @@
 	Get survey questions of a certain group for a patient: <code>/rest/survey/questions/QUESTION_GROUP_ID_GOES_HERE/SESSION_ID_GOES_HERE</code><br />
   Get specific patient's survey responses: <code>/rest/survey/patient/SESSION_ID_GOES_HERE</code><br />
   Get end points for a patient's survey responses: <code>/rest/survey/points/SESSION_ID_GOES_HERE</code><br />
-  Check if survey has been completed for a specific patient: <code>/rest/survey/completed/SESSION_ID_GOES_HERE</code><br />
+  Check if survey has been completed for a specific patient: <code>/rest/survey/completed/SESSION_ID_GOES_HERE</code><br /><br />
+  
+  Set a survey question's answer for a patient based on session id: <code>/rest/action/<br /><br />
+  Post to this page:<br/>action='update_survey_answer'<br/>session_id=SESSION_ID_GOES_HERE<br/>question_id=QUESTION_ID_GOES_HERE<br/>selected_option_id=SELECTED_OPTION_ID_GOES_HERE
+  <br /><br />
+  If the question has multiple answers (for checkboxes for example) all answers should be seperated by a comma.
+  <br />Ie: selected_option_id=1,4,5
+  </code><br />
+  
+  Set a survey as completed for a patient based on session id: <code>/rest/action/<br /><br />
+  Post to this page:<br/>action='survey_completed'<br/>session_id=SESSION_ID_GOES_HERE</code><br />
 </body>

@@ -12,6 +12,23 @@ class Rest extends CI_Controller {
 		$this->load->view('api_docs');
 	}
 	
+  function action()
+  {
+  	$callback = $this->input->get('callback', NULL);
+    $data = null;
+    $this->load->model('survey');
+	
+	if($this->input->post('action') == 'survey_completed')
+	{
+		$data = $this->survey->setSurveyCompleted($this->input->post('session_id'));
+	}
+	elseif($this->input->post('action') == 'update_survey_answer')
+	{
+		$data = $this->survey->setSurveyResult($this->input->post('session_id'),$this->input->post('question_id'),$this->input->post('selected_option_id'));
+	}
+    $this->load->view('rest',array('callback'=>$callback, 'data' => $data));
+  }
+	
   function patient($sessionID)
   {
   	$callback = $this->input->get('callback', NULL);

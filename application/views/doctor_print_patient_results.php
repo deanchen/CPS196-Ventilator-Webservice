@@ -10,6 +10,8 @@
 
 </head>
 <body>
+<p><a href="#" class="button" onclick="window.print();" onkeypress="submit_on_enter(event,2)" tabindex="2" ><span>Print this page</span></a>
+</p><br />
 <?php
   $print_content = "<html>";	
   $i=1;
@@ -71,6 +73,5 @@
   
 echo $print_content;  
 ?>
-<br />
 </body>
 </html>

@@ -253,7 +253,7 @@ function radio_group_val(id){
 
 <div align="right" style="float:right; margin-right:25px">
 
-  <p> <a href="javascript:void(0);" class="button" target="_blank" onclick="window.open('/doctor/printt/<?php echo $sessionID; ?>','','scrollbars=1');return false;"><span>Print All Results</span></a></p>
+  <p> <a href="javascript:void(0);" class="button" target="_blank" onclick="window.open('/doctor/patient_answers/<?php echo $sessionID; ?>','','scrollbars=1');return false;"><span>View Survey Answers</span></a></p>
 
 </div>
 
