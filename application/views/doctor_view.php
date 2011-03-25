@@ -233,7 +233,9 @@ or use mozilla, chrome or any other browser</strong></h1>
 
 <td valign="middle" align="left" class="rowHd">Medical Record Number</td>
 
-<td valign="middle" align="left" class="rowHd">Website link</td>
+<td valign="middle" align="left" class="rowHd">Survey Link</td>
+
+<td valign="middle" align="left" class="rowHd">Results</td>
 
 </tr>
 
@@ -246,7 +248,7 @@ or use mozilla, chrome or any other browser</strong></h1>
 			$i = '2';
 		}
 		if (!$record['survey_completed']) {
-			$session_id = '<a href="http://vc.ocirs.com/index.php?session_id=' . $record['session_id'] . '">' . $record['session_id'] . '</a>';
+			$session_id = $record['session_id'];
 		} else {
 			$session_id = $record['session_id'];
 		}
@@ -258,6 +260,8 @@ or use mozilla, chrome or any other browser</strong></h1>
 		<td valign="middle" align="left" class="rowFld' . $i . '">' . $session_id . '</td>
 
 		<td valign="middle" align="left" class="rowFld' . $i . '">' . $record['medical_record_no'] . '</td>
+		
+		<td valign="middle" align="left" class="rowFld' . $i . '"><a href="http://vc.ocirs.com/index.php?session_id=' . $record['session_id'] . '">Link</a></td>
 
 		<td valign="middle" align="left" class="rowFld' . $i . '">';
 

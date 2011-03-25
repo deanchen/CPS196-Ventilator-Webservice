@@ -58,7 +58,7 @@
 							$print_content .= ' checked="checked"';
 							$print_content .= 'name="survey_ques_radio_'.$option['question_id'].'" id="survey_ques_'.$option['option_id'].'" value="'.$option['question_id'].','.$option['option_id'].'" class="surveyRadio" />';
 						}
-						$print_content .= '<label for="radio">'.$option['option_value'].'</label>';
+						$print_content .= '<label for="radio">'.$option['option_value'].'</label><br />';
 						if($option['break_required'])
 						$print_content .= '<br/>';
 		  			} 

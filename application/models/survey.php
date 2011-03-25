@@ -21,7 +21,28 @@
 		}
 		
 		public function updateSurvey($post_data)
-		{
+		{			
+			$deleteType = null;
+			$deleteGroup = null;
+			$deleteQuestion = null;
+			$deleteOption = null;
+			if(strlen($_POST['toDelete']) > 0)
+			{
+				$parts = explode("-",$_POST['toDelete']);
+				$deleteType = $parts[0];
+				$deleteGroup = $parts[1];
+				
+				if(count($parts) == 4)
+				{
+					$deleteQuestion = $parts[2];
+					$deleteOption = $parts[3];
+				}
+				elseif(count($parts) == 3)
+				{
+					$deleteQuestion = $parts[2];
+				}
+			}
+			
 			$this->load->database();
 			$this->db->query("TRUNCATE TABLE tbl_survey_options");
 			$this->db->query("TRUNCATE TABLE tbl_survey_questions");
@@ -36,7 +57,10 @@
 				{
 					$parts = explode('-',$key);
 					
-					$this->db->query("INSERT INTO `ventilator`.`tbl_survey_question_groups` (`id`, `title`, `created_at`, `updated_at`) VALUES (".$this->db->escape($parts[1]).", ".$this->db->escape($value).", NOW(), NOW())");
+					if($deleteType != 'group' ||  $deleteGroup != $parts[1])
+					{
+						$this->db->query("INSERT INTO `ventilator`.`tbl_survey_question_groups` (`id`, `title`, `created_at`, `updated_at`) VALUES (".$this->db->escape($parts[1]).", ".$this->db->escape($value).", NOW(), NOW())");
+					}
 				}
 				elseif(strpos($key, 'question') !== false)
 				{
@@ -59,7 +83,21 @@
 					{
 						$multi = 1;
 					}
-					$this->db->query("INSERT INTO `ventilator`.`tbl_survey_questions` (`id`, `question`, `is_mandatory`, `is_multi_answered`, `questions_group_id`, `created_at`, `updated_at`) VALUES (".$this->db->escape($id).", ".$this->db->escape($value2['text']).", '1', ".$this->db->escape($multi).", ".$this->db->escape($group).", 'NOW()', 'NOW()')");
+					
+					$dontAdd = false;
+					if($deleteType == 'group' &&  $deleteGroup == $group)
+					{
+							$dontAdd = true;
+					}
+					elseif($deleteType == 'question' &&  $deleteQuestion == $id)
+					{
+							$dontAdd = true;
+					}
+					
+					if(!$dontAdd)
+					{
+						$this->db->query("INSERT INTO `ventilator`.`tbl_survey_questions` (`id`, `question`, `is_mandatory`, `is_multi_answered`, `questions_group_id`, `created_at`, `updated_at`) VALUES (".$this->db->escape($id).", ".$this->db->escape($value2['text']).", '1', ".$this->db->escape($multi).", ".$this->db->escape($group).", 'NOW()', 'NOW()')");
+					}
 				}
 			}
 			
@@ -69,7 +107,24 @@
 				{
 					foreach($value2 as $id=>$value3)
 					{
-						$this->db->query("INSERT INTO `ventilator`.`tbl_survey_options` (`id`, `question_id`, `name`, `points`, `break_required`, `created_at`, `updated_at`) VALUES (".$this->db->escape($id).", ".$this->db->escape($question).", ".$this->db->escape($value3['text']).", ".$this->db->escape($value3['points']).", '0', 'NOW()', 'NOW()')");
+						$dontAdd = false;
+						if($deleteType == 'group' &&  $deleteGroup == $group)
+						{
+								$dontAdd = true;
+						}
+						elseif($deleteType == 'question' &&  $deleteQuestion == $question)
+						{
+								$dontAdd = true;
+						}
+						elseif($deleteType == 'option' &&  $deleteOption == $id)
+						{
+								$dontAdd = true;
+						}
+							
+						if(!$dontAdd)
+						{
+							$this->db->query("INSERT INTO `ventilator`.`tbl_survey_options` (`id`, `question_id`, `name`, `points`, `break_required`, `created_at`, `updated_at`) VALUES (".$this->db->escape($id).", ".$this->db->escape($question).", ".$this->db->escape($value3['text']).", ".$this->db->escape($value3['points']).", '0', 'NOW()', 'NOW()')");
+						}
 					}
 				}
 			}

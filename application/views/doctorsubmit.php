@@ -213,7 +213,7 @@ function radio_group_val(id){
 
       <td valign="top" align="left" class="hLeft">&nbsp;</td>
 
-      <td valign="middle" align="left" class="hRight">Success - New session ID generated</td>
+      <td valign="middle" align="left" class="hRight">Success - Patient Added</td>
 
     </tr>
 
@@ -223,11 +223,7 @@ function radio_group_val(id){
 
 <div class="indexContent">
 
-<p><strong>Session ID:</strong> <b><?php echo $id; ?></b></p>
-
-<p>Please enter this session id on the iPad device to allow the patient's family to use the ventilator app.</p>
-
-<p><a href="#" class="button" onclick="window.print();" onkeypress="submit_on_enter(event,2)" tabindex="2" ><span>Print this page</span></a> </p>
+<p><br /><br />Please navigate to the <strong>View Patients</strong> page on the iPad device, find this patient, and then click on the Link field for this patient to allow the patient's family to use the ventilator app.</p>
 
 </div>
 
