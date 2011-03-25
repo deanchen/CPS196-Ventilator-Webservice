@@ -1,87 +1,80 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
+	<head>
 
-<title>PMV Decision Aid Tool</title>
+		<title>PMV Decision Aid Tool</title>
+		<link href="/css/styles.css" rel="stylesheet" type="text/css" />
+		<meta name="format-detection" content="telephone=no">
+		<style>
+			.ieDiv {
+				display:none;
+			}
+		</style>
+		<!--[if lte IE 6]>
 
-<link href="/css/styles.css" rel="stylesheet" type="text/css" />
+		<style>
 
-<style>
+		.ieDiv{
 
-.ieDiv{
+		background-color:#808080;
 
-  display:none;
+		color:#000000;
 
-}
+		display:block;
 
-</style>
+		text-align:center;
 
-<!--[if lte IE 6]> 
+		width:100%;
 
-<style>
+		height:100%;
 
-.ieDiv{
+		padding-top:10px;
 
-  background-color:#808080;
+		}
 
-  color:#000000;
+		.content_div{
 
-  display:block;
+		display:none;
 
-  text-align:center;
+		}
 
-  width:100%;
+		</style>
 
-  height:100%;
+		<![endif]-->
 
-  padding-top:10px;
+		<script type="text/javascript">
 
-}
+function $id(id){
 
-.content_div{
-
-  display:none;
-
-}
-
-</style>
-
-<![endif]-->
-
-<script type="text/javascript">
-
-function $id(id){ 
-
-  return document.getElementById(id);
+return document.getElementById(id);
 
 }
 
 function radio_group_val(id){
 
-  for(var i=0;i<document.getElementsByName(id).length;i++){
+for(var i=0;i<document.getElementsByName(id).length;i++){
 
-    var chked = 0;
+var chked = 0;
 
-    if(document.getElementsByName(id)[i].checked){
+if(document.getElementsByName(id)[i].checked){
 
-      chked=1;
+chked=1;
 
-      break;
+break;
 
-    }
+}
 
-  }
+}
 
-  if(!chked)
+if(!chked)
 
-  return false;
+return false;
 
-  else
+else
 
-  return true;
+return true;
 
 }
 
@@ -93,225 +86,211 @@ function radio_group_val(id){
 
 <div class="ieDiv">
 
-  <h1><strong>You are using older version of Internet Explorer. <br/>
+<h1><strong>You are using older version of Internet Explorer. <br/>
 
-    <br/>
+<br/>
 
-    Please upgrade your browser <br/>
+Please upgrade your browser <br/>
 
-    <br/>
+<br/>
 
-    or use mozilla, chrome or any other browser</strong></h1>
+or use mozilla, chrome or any other browser</strong></h1>
 
 </div>
 
 <div id="container" class="content_div">
 
-  <div id="header">
+<div id="header">
 
-    <div id="logo"><img src="/images/logo.jpg" width="285" height="20" alt="Logo" /></div>
+<div id="logo"><img src="/images/logo.jpg" width="285" height="20" alt="Logo" /></div>
 
-  </div>
+</div>
 
-  <div id="content">
+<div id="content">
 
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
-      <tr>
+<tr>
 
-        <td valign="top" align="left" class="menuLeftRight">&nbsp;</td>
+<td valign="top" align="left" class="menuLeftRight">&nbsp;</td>
 
-        <td valign="top" align="left" class="menuBg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+<td valign="top" align="left" class="menuBg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 
-            <tr>
+<tr>
 
-           <td valign="middle" align="center" class="tab">  <a href="/" >Home</a> </td>
+<td valign="middle" align="center" class="tab">  <a href="/" >Home</a> </td>
 
-              <td valign="middle" align="center" class="tab"> <a href="/doctor/">Add A Patient</a> </td>
+<td valign="middle" align="center" class="tab"> <a href="/doctor/">Add A Patient</a> </td>
 
-              <td valign="middle" align="center" class="tab"><a href="/doctor/view/" class="active">View Patients</a></td>
-              
-            </tr>
+<td valign="middle" align="center" class="tab"><a href="/doctor/view/" class="active">View Patients</a></td>
 
-          </table></td>
+</tr>
 
-        <td valign="top" align="left" class="menuLeftRight">&nbsp;</td>
+</table></td>
 
-      </tr>
+<td valign="top" align="left" class="menuLeftRight">&nbsp;</td>
 
-    </table>
+</tr>
 
-    <div id="menuContent">
+</table>
 
-      <div id="tabContent"></div>
+<div id="menuContent">
 
-      <div id="tabContentClose">
+<div id="tabContent"></div>
 
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+<div id="tabContentClose">
 
-          <tr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 
-            <td class="cbl3">&nbsp;</td>
+<tr>
 
-            <td class="cbm3">&nbsp;</td>
+<td class="cbl3">&nbsp;</td>
 
-            <td class="cbr3">&nbsp;</td>
+<td class="cbm3">&nbsp;</td>
 
-          </tr>
+<td class="cbr3">&nbsp;</td>
 
-        </table>
+</tr>
 
-      </div>
+</table>
 
-    </div>
+</div>
 
-    <div id="menuContentClose">
+</div>
 
-      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+<div id="menuContentClose">
 
-        <tr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 
-          <td class="cbl2">&nbsp;</td>
+<tr>
 
-          <td class="cbm2">&nbsp;</td>
+<td class="cbl2">&nbsp;</td>
 
-          <td class="cbr2">&nbsp;</td>
+<td class="cbm2">&nbsp;</td>
 
-        </tr>
+<td class="cbr2">&nbsp;</td>
 
-      </table>
+</tr>
 
-    </div>
+</table>
 
-  </div>
+</div>
 
-  <div id="contentPanelTop2">
+</div>
 
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<div id="contentPanelTop2">
 
-      <tr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
-        <td valign="top" align="left" class="ctl">&nbsp;</td>
+<tr>
 
-        <td valign="top" align="left" class="ctm">&nbsp;</td>
+<td valign="top" align="left" class="ctl">&nbsp;</td>
 
-        <td valign="top" align="left" class="ctr">&nbsp;</td>
+<td valign="top" align="left" class="ctm">&nbsp;</td>
 
-      </tr>
+<td valign="top" align="left" class="ctr">&nbsp;</td>
 
-    </table>
+</tr>
 
-  </div>
+</table>
 
-  <div id="contentPanel3">
+</div>
 
-    <div id="workArea">       <div class="heading">
+<div id="contentPanel3">
 
-        <table width="50%" border="0" cellspacing="0" cellpadding="0">
+<div id="workArea">       <div class="heading">
 
-          <tr>
+<table width="50%" border="0" cellspacing="0" cellpadding="0">
 
-            <td valign="top" align="left" class="hLeft">&nbsp;</td>
+<tr>
 
-            <td valign="middle" align="left" class="hRight">Patients Added</td>
+<td valign="top" align="left" class="hLeft">&nbsp;</td>
 
-          </tr>
+<td valign="middle" align="left" class="hRight">Patients Added</td>
 
-        </table>
+</tr>
 
-      </div>
+</table>
 
-    <p class="serchBox" align="right">
+</div>
 
-          <input type="text" name="search_str" tabindex="1" id="search_str" onkeypress="submit_on_enter(event)" class="inputFld" value="<?php echo $searchString; ?>" />
+<p class="serchBox" align="right">
 
-          <a class="button" href="#" onclick="submit_search()" tabindex="2" onkeypress="submit_on_enter(event)"><span>Search</span></a>
+<input type="text" name="search_str" tabindex="1" id="search_str" onkeypress="submit_on_enter(event)" class="inputFld" value="<?php echo $searchString;
+ ?>" />
 
-        </p>
+<a class="button" href="#" onclick="submit_search()" tabindex="2" onkeypress="submit_on_enter(event)"><span>Search</span></a>
 
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+</p>
 
-  <tr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
-    <td valign="middle" align="left" class="rowHd">Patient Name</td>
+<tr>
 
-    <td valign="middle" align="left" class="rowHd">Session ID</td>
+<td valign="middle" align="left" class="rowHd">Patient Name</td>
 
-    <td valign="middle" align="left" class="rowHd">Medical Record Number</td>
+<td valign="middle" align="left" class="rowHd">Session ID</td>
 
-    <td valign="middle" align="left" class="rowHd">Website link</td>
+<td valign="middle" align="left" class="rowHd">Medical Record Number</td>
 
-  </tr>
+<td valign="middle" align="left" class="rowHd">Website link</td>
 
-   <?php 
-  $i = '2';
-  foreach($records as $record)
-  {
-    if($i == '2')
-	{
-		$i = '';
+</tr>
+
+<?php
+	$i = '2';
+	foreach($records as $record) {
+		if($i == '2') {
+			$i = '';
+		} else {
+			$i = '2';
+		}
+
+		echo '<tr>
+
+		<td valign="middle" align="left" class="rowFld' . $i . '">' . $record['name'] . '</td>
+
+		<td valign="middle" align="left" class="rowFld' . $i . '">' . $record['session_id'] . '</td>
+
+		<td valign="middle" align="left" class="rowFld' . $i . '">' . $record['medical_record_no'] . '</td>
+
+		<td valign="middle" align="left" class="rowFld' . $i . '">';
+
+		if($record['survey_completed']) {
+			echo '<a href="/doctor/patient/' . $record['session_id'] . '">Click to view survey result</a>';
+		} else {
+			echo 'Survey not finished yet';
+		}
+		echo '</td></tr>';
 	}
-	else
-	{
-		$i = '2';		
-	}	
-		           
-    echo
-    '<tr>
-  
-      <td valign="middle" align="left" class="rowFld'.$i.'">'. $record['name'] .'</td>
-  
-      <td valign="middle" align="left" class="rowFld'.$i.'">'. $record['session_id'] .'</td>
-  
-      <td valign="middle" align="left" class="rowFld'.$i.'">'. $record['medical_record_no'] .'</td>
-  
-      <td valign="middle" align="left" class="rowFld'.$i.'">';
-      
-      if($record['survey_completed'])
-      {
-         echo '<a href="/doctor/patient/'.$record['session_id'].'">Click to view survey result</a>';
-      }
-      else
-      {
-        echo 'Survey not finished yet';    
-      }
-      echo '</td></tr>';
-  	} 
-    ?>
-  
-  </table>
+?>
 
-<?php if($pages > 1)
-{
-	if($searchString != NULL)
-	{
-		$search_str = '/'.$searchString;
-	}
-	else
-	{
-		$search_str = '';
-	}
-	
-  echo '<p align="right" class="pagination"><a href="/doctor/view/'.($this_page_number-1).$search_str.'" class="pagination_anchor"><b>Previous</b></a>';
-  
-  for($i = 1; $i <= $pages; $i ++)
-  {
-     if($i == $this_page_number)
-     {
-       echo '&nbsp;<span class=""><b>'.($i).'</b>';
-     }
-     else
-     {
-       echo '</span>&nbsp;<a href="/doctor/view/'.($i).$search_str.'" class="pagination_anchor" >'.($i).'</a>';
-     }
-  }
-  
-  echo '&nbsp;<a href="/doctor/view/'.($this_page_number+1).$search_str.'" class="pagination_anchor"><b>Next</b></a></p>';
-}?>
+</table>
+
+<?php
+	if($pages > 1) {
+		if($searchString != NULL) {
+			$search_str = '/' . $searchString;
+		} else {
+			$search_str = '';
+		}
+
+		echo '<p align="right" class="pagination"><a href="/doctor/view/' . ($this_page_number - 1) . $search_str . '" class="pagination_anchor"><b>Previous</b></a>';
+
+		for($i = 1; $i <= $pages; $i++) {
+			if($i == $this_page_number) {
+				echo '&nbsp;<span class=""><b>' . ($i) . '</b>';
+			} else {
+				echo '</span>&nbsp;<a href="/doctor/view/' . ($i) . $search_str . '" class="pagination_anchor" >' . ($i) . '</a>';
+			}
+		}
+
+		echo '&nbsp;<a href="/doctor/view/' . ($this_page_number + 1) . $search_str . '" class="pagination_anchor"><b>Next</b></a></p>';
+	}?>
 
 <form action="http://test.teamkollab.com/pmv/index.php?p=doctor.create_patient_session" method="post" id="submit_session_form">
 
-  <input type="hidden" name="session_id" id="session_id" value=""/>
+<input type="hidden" name="session_id" id="session_id" value=""/>
 
 </form>
 
@@ -319,11 +298,11 @@ function radio_group_val(id){
 
 function submit_search(){
 
-  var search_str = $id("search_str").value;
+var search_str = $id("search_str").value;
 
-  var url = "/doctor/view/1/"+urlencode(search_str);
+var url = "/doctor/view/1/"+urlencode(search_str);
 
-  window.location = url;
+window.location = url;
 
 }
 
@@ -333,49 +312,39 @@ return escape(str).replace(/\+/g,'%2B').replace(/%20/g, '-').replace(/\*/g, '%2A
 
 function submit_on_enter(e){
 
-   e = (window.event) ? window.event : e;
+e = (window.event) ? window.event : e;
 
-  if(e.which || e.keyCode){
+if(e.which || e.keyCode){
 
-    if ((e.which == 13) || (e.keyCode == 13))
+if ((e.which == 13) || (e.keyCode == 13))
 
-    submit_search();
+submit_search();
 
-  }
+}
 
 }
 
 $id("search_str").focus();
+		</script>
+		</div>
 
+		</div>
 
+		<div id="contentPanelBottom3">
 
-</script>
-       </div>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
-  </div>
+				<tr>
 
-  <div id="contentPanelBottom3">
+					<td valign="top" align="left" class="cbl">&nbsp;</td>
+					<td valign="top" align="left" class="cbm">&nbsp;</td>
+					<td valign="top" align="left" class="cbr">&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+		<div id="footer">
+		</div>
+		</div>
 
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-
-      <tr>
-
-        <td valign="top" align="left" class="cbl">&nbsp;</td>
-
-        <td valign="top" align="left" class="cbm">&nbsp;</td>
-
-        <td valign="top" align="left" class="cbr">&nbsp;</td>
-
-      </tr>
-
-    </table>
-
-  </div>
-
-  <div id="footer"></div>
-
-</div>
-
-</body>
-
+		</body>
 </html>
