@@ -19,8 +19,63 @@
 				return $ex;
 			}
 		}
+		
+		public function updateSurvey($post_data)
+		{
+			$this->load->database();
+			$this->db->query("TRUNCATE TABLE tbl_survey_options");
+			$this->db->query("TRUNCATE TABLE tbl_survey_questions");
+			$this->db->query("TRUNCATE TABLE tbl_survey_question_groups");
 			
-		public function getSurveyQuestions($question_group_id,$session_id){
+			$questions = array();
+			$answers = array();
+			
+			foreach($post_data as $key=>$value)
+			{
+				if(strpos($key, 'group') !== false)
+				{
+					$parts = explode('-',$key);
+					
+					$this->db->query("INSERT INTO `ventilator`.`tbl_survey_question_groups` (`id`, `title`, `created_at`, `updated_at`) VALUES (".$this->db->escape($parts[1]).", ".$this->db->escape($value).", NOW(), NOW())");
+				}
+				elseif(strpos($key, 'question') !== false)
+				{
+					$parts = explode('-',$key);
+					$questions[$parts[1]][$parts[2]][$parts[3]] = $value;
+				}
+				elseif(strpos($key, 'option') !== false)
+				{
+					$parts = explode('-',$key);
+					$answers[$parts[1]][$parts[2]][$parts[3]][$parts[4]] = $value;
+				}
+			}
+			
+			foreach($questions as $group=>$value)
+			{
+				foreach($value as $id=>$value2)
+				{
+					$multi = 0;
+					if(isset($value2['multi']))
+					{
+						$multi = 1;
+					}
+					$this->db->query("INSERT INTO `ventilator`.`tbl_survey_questions` (`id`, `question`, `is_mandatory`, `is_multi_answered`, `questions_group_id`, `created_at`, `updated_at`) VALUES (".$this->db->escape($id).", ".$this->db->escape($value2['text']).", '1', ".$this->db->escape($multi).", ".$this->db->escape($group).", 'NOW()', 'NOW()')");
+				}
+			}
+			
+			foreach($answers as $group=>$value)
+			{
+				foreach($value as $question=>$value2)
+				{
+					foreach($value2 as $id=>$value3)
+					{
+						$this->db->query("INSERT INTO `ventilator`.`tbl_survey_options` (`id`, `question_id`, `name`, `points`, `break_required`, `created_at`, `updated_at`) VALUES (".$this->db->escape($id).", ".$this->db->escape($question).", ".$this->db->escape($value3['text']).", ".$this->db->escape($value3['points']).", '0', 'NOW()', 'NOW()')");
+					}
+				}
+			}
+		}
+			
+		public function getSurveyQuestions($question_group_id,$session_id=null){
 			try{
 				 $this->load->database();
 				 $res_survey_ques = $this->db->query("SELECT SQG.id AS groupd_id, SQG.title, SQ.id AS question_id, SQ.question, SQ.is_multi_answered, SO.id AS option_id, SO.name AS option_value, SO.points, SO.break_required, PSD.selected_option_id
