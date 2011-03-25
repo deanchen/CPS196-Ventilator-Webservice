@@ -245,12 +245,17 @@ or use mozilla, chrome or any other browser</strong></h1>
 		} else {
 			$i = '2';
 		}
-
+		if (!$record['survey_completed']) {
+			$session_id = '<a href="http://vc.ocirs.com/index.php?session_id=' . $record['session_id'] . '">' . $record['session_id'] . '</a>';
+		} else {
+			$session_id = $record['session_id'];
+		}
+		
 		echo '<tr>
 
 		<td valign="middle" align="left" class="rowFld' . $i . '">' . $record['name'] . '</td>
 
-		<td valign="middle" align="left" class="rowFld' . $i . '">' . $record['session_id'] . '</td>
+		<td valign="middle" align="left" class="rowFld' . $i . '">' . $session_id . '</td>
 
 		<td valign="middle" align="left" class="rowFld' . $i . '">' . $record['medical_record_no'] . '</td>
 
