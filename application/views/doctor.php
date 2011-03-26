@@ -313,6 +313,14 @@ function radio_group_val(id){
 
 <script type="text/javascript">
 
+function is_int(value){ 
+  if((parseFloat(value) == parseInt(value)) && !isNaN(value)){
+      return true;
+  } else { 
+      return false;
+  } 
+}
+
 function validate(){
 
   if($id("patient_name").value == ''){
@@ -330,6 +338,26 @@ function validate(){
     alert("Please enter medical record number.");
 
     $id("medical_record_no").focus();
+
+    return false;
+
+  }
+  
+  if(!is_int($id("patient_age").value)){
+
+    alert("Please enter a numeric age.");
+
+    $id("patient_age").focus();
+
+    return false;
+
+  }
+  
+  if(!is_int($id("platelets").value)){
+
+    alert("Please enter a numeric platelet count.");
+
+    $id("platelets").focus();
 
     return false;
 
