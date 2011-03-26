@@ -56,7 +56,7 @@
         
         $query = $this->db->query("SELECT session_id,name,medical_record_no,survey_completed FROM tbl_patient_sessions"
         .$where.
-        "LIMIT " . $records_per_page . " OFFSET ". $records_per_page*($page-1));
+        "ORDER BY created_at DESC LIMIT " . $records_per_page . " OFFSET ". $records_per_page*($page-1));
         
         if($query->num_rows() > 0){
           $res = $query->result_array();
