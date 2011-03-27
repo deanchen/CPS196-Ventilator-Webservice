@@ -60,7 +60,7 @@
 	</div>
 	<div id="container" class="content_div">
 	<div id="header">
-	<div id="logo"><img src="../../images/logo.jpg" width="285" height="20" alt="Logo" /></div>
+	<div id="logo"><img src="/<?php echo $subdir; ?>/images/logo.jpg" width="285" height="20" alt="Logo" /></div>
 	</div>
 	<div id="content">
 		
