@@ -51,13 +51,15 @@ class Rest extends CI_Controller {
     }
     elseif($command =='questions')
     {
-      if ($this->input->post('selected_option_id') != '') {
-      	$question_id = $param1;
-		$session_id = $param2;
-      	$data = $this->survey->setSurveyResult($session_id,$question_id,$this->input->post('selected_option_id'));
+      $question_group_id = $param1;
+	  $session_id = $param2;
+      if ($this->input->post()) {
+      	$data = array();
+      	foreach ($this->input->post() as $question_id => $answer) {
+      		$data[$question_id] = $answer;
+      		//$data = $this->survey->setSurveyResult($session_id,$question_id,);
+		}
 	  } else {
-	  	$question_group_id = $param1;
-		$session_id = $param2;
       	$data = $this->survey->getSurveyQuestions($question_group_id,$session_id);
 	  }
     }
