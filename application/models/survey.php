@@ -229,8 +229,9 @@
 		  $this->load->database();
 		  $res = $this->db->query("DELETE FROM tbl_patient_survey_data WHERE session_id='".$session_id."' AND question_id='".$question_id."'");
 			
-		  foreach(explode(',',$selected_option_id) as $selected_option)
-		  $this->db->query("INSERT INTO tbl_patient_survey_data (session_id, question_id, selected_option_id, updated_at) VALUES ('".$session_id."', '".$question_id."', '".$selected_option."', NOW())");
+		  foreach(explode(',',$selected_option_id) as $selected_option) {
+		  	$this->db->query("INSERT INTO tbl_patient_survey_data (session_id, question_id, selected_option_id, updated_at) VALUES ('".$session_id."', '".$question_id."', '".$selected_option."', NOW())");
+		  }
 		  return true;
 		}
 		
