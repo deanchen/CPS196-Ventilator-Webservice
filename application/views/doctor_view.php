@@ -3,8 +3,8 @@
 	<head>
 		<title>PMV Decision Aid Tool</title>
 		<?php 
-			$request_url = explode('/', $_SERVER['REQUEST_URI']); 
-			$subdir = $request_url[1];
+			#$request_url = explode('/', $_SERVER['REQUEST_URI']); 
+			#$subdir = $request_url[1];
 			$subdir = "api";
 		?>
 		<link href="/<?php echo $subdir; ?>/css/styles.css" rel="stylesheet" type="text/css" />
