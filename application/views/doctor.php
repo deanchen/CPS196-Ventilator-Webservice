@@ -205,7 +205,7 @@ function radio_group_val(id){
 
   <div id="contentPanel3">
 
-    <div id="workArea">       <form action="/doctor/submit/" method="post" name="patient_details_form" id="patient_details_form" onsubmit="validate();">
+    <div id="workArea">       <form action="submit/" method="post" name="patient_details_form" id="patient_details_form" onsubmit="validate();">
 
   <div class="heading">
 

@@ -309,7 +309,7 @@ function submit_search(){
 
 var search_str = $id("search_str").value;
 
-var url = "/doctor/view/1/"+urlencode(search_str);
+var url = "../view/1/"+urlencode(search_str);
 
 window.location = url;
 
