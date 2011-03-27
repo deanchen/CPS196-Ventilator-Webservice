@@ -7,7 +7,7 @@
 
 <title>PMV Decision Aid Tool</title>
 
-<link href="/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="../css/styles.css" rel="stylesheet" type="text/css" />
 
 <style>
 
@@ -109,7 +109,7 @@ function radio_group_val(id){
 
   <div id="header">
 
-    <div id="logo"><img src="/images/logo.jpg" width="285" height="20" alt="Logo" /></div>
+    <div id="logo"><img src="../images/logo.jpg" width="285" height="20" alt="Logo" /></div>
 
   </div>
 
@@ -125,11 +125,11 @@ function radio_group_val(id){
 
             <tr>
 
-             <td valign="middle" align="center" class="tab">  <a href="/" >Home</a> </td>
+             <td valign="middle" align="center" class="tab">  <a href="../" >Home</a> </td>
 
-              <td valign="middle" align="center" class="tab"> <a href="/doctor/" class="active">Add A Patient</a> </td>
+              <td valign="middle" align="center" class="tab"> <a href="" class="active">Add A Patient</a> </td>
 
-              <td valign="middle" align="center" class="tab"><a href="/doctor/view/">View Patients</a></td>
+              <td valign="middle" align="center" class="tab"><a href="view/">View Patients</a></td>
 
             </tr>
 

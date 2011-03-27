@@ -7,7 +7,7 @@
 
 <title>PMV Decision Aid Tool</title>
 
-<link href="/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="../../css/styles.css" rel="stylesheet" type="text/css" />
 
 <style>
 
@@ -113,11 +113,11 @@ function radio_group_val(id){
 
             <tr>
 
-           <td valign="middle" align="center" class="tab">  <a href="/" >Home</a> </td>
+           <td valign="middle" align="center" class="tab">  <a href="../../" >Home</a> </td>
 
-              <td valign="middle" align="center" class="tab"> <a href="/doctor/">Add A Patient</a> </td>
+              <td valign="middle" align="center" class="tab"> <a href="../">Add A Patient</a> </td>
 
-              <td valign="middle" align="center" class="tab"><a href="/doctor/view/">View Patients</a></td>
+              <td valign="middle" align="center" class="tab"><a href="../view/">View Patients</a></td>
               
             </tr>
 
@@ -253,7 +253,7 @@ function radio_group_val(id){
 
 <div align="right" style="float:right; margin-right:25px">
 
-  <p> <a href="javascript:void(0);" class="button" target="_blank" onclick="window.open('/doctor/patient_answers/<?php echo $sessionID; ?>','','scrollbars=1');return false;"><span>View Survey Answers</span></a></p>
+  <p> <a href="javascript:void(0);" class="button" target="_blank" onclick="window.open('../patient_answers/<?php echo $sessionID; ?>','','scrollbars=1');return false;"><span>View Survey Answers</span></a></p>
 
 </div>
 

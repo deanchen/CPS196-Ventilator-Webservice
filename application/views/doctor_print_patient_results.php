@@ -6,7 +6,7 @@
 
 <title>PMV Decision Aid Tool</title>
 
-<link href="/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="../../css/styles.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -69,7 +69,7 @@
   }
   
   $print_content .= '<style> .alert{ 	background-color:#e0dede; 	padding:10px; 	font-size:16px; 	margin:5px; 	margin-bottom:40px; } #slider-div{ 	margin:0 auto; 	width:810px; 	padding-top:5px; 	position:relative; } #slider{ 	margin:0 auto; 	background-color:#68c054; 	height:28px; 	width:810px; 	 } #slider_arrow{ 	position:absolute; 	top:-6px; 	left:0px; } #sliderArrow{ 	margin-bottom:10px; } #sliderSteps{ 	margin:0 auto; 	height:28px; 	width:810px; 	color:#00ace4; 	font-size:16px; 	font-weight:bold; 	padding:5px; 	margin-bottom:90px; } </style> <div> <br/> <p>This figure shows what direction the patient\'s family may be leaning in their decision about treatment goals for their loved one.<br />On the far left side of the line below is comfort care. The far right represents doing everything possible for survival.<br/>The BLUE TRIANGLE on the line shows where they might be leaning based on their answers to the survey questions.</p><br/>
-   </div> <div  id="slider-div">   <div id="slider"> </div>    <img src="/images/arrow.png" style="left:'.$top_incr_px.';" id="slider_arrow"  />   <div id="sliderArrow"></div> </div> <div id="sliderSteps">   <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">     <tr>       <td valign="top" align="left" colspan="3"></td>     </tr>     <tr>       <td valign="top" align="left" width="25%">Comfort</td>        <td valign="top" align="center">Survival but no <br/>         prolonged life support</td>       <td valign="top" align="right" width="25%">Survival at All Cost</td>     </tr>   </table> </div>';
+   </div> <div  id="slider-div">   <div id="slider"> </div>    <img src="../../images/arrow.png" style="left:'.$top_incr_px.';" id="slider_arrow"  />   <div id="sliderArrow"></div> </div> <div id="sliderSteps">   <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">     <tr>       <td valign="top" align="left" colspan="3"></td>     </tr>     <tr>       <td valign="top" align="left" width="25%">Comfort</td>        <td valign="top" align="center">Survival but no <br/>         prolonged life support</td>       <td valign="top" align="right" width="25%">Survival at All Cost</td>     </tr>   </table> </div>';
   
 echo $print_content;  
 ?>

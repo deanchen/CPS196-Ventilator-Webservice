@@ -5,7 +5,7 @@
 	<head>
 
 		<title>PMV Decision Aid Tool</title>
-		<link href="/css/styles.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/styles.css" rel="stylesheet" type="text/css" />
 		<meta name="format-detection" content="telephone=no">
 		<style>
 			.ieDiv {
@@ -102,7 +102,7 @@ or use mozilla, chrome or any other browser</strong></h1>
 
 <div id="header">
 
-<div id="logo"><img src="/images/logo.jpg" width="285" height="20" alt="Logo" /></div>
+<div id="logo"><img src="../../images/logo.jpg" width="285" height="20" alt="Logo" /></div>
 
 </div>
 
@@ -118,11 +118,11 @@ or use mozilla, chrome or any other browser</strong></h1>
 
 <tr>
 
-<td valign="middle" align="center" class="tab">  <a href="/" >Home</a> </td>
+<td valign="middle" align="center" class="tab">  <a href="../../" >Home</a> </td>
 
-<td valign="middle" align="center" class="tab"> <a href="/doctor/">Add A Patient</a> </td>
+<td valign="middle" align="center" class="tab"> <a href="../">Add A Patient</a> </td>
 
-<td valign="middle" align="center" class="tab"><a href="/doctor/view/" class="active">View Patients</a></td>
+<td valign="middle" align="center" class="tab"><a href="" class="active">View Patients</a></td>
 
 </tr>
 
@@ -261,12 +261,12 @@ or use mozilla, chrome or any other browser</strong></h1>
 
 		<td valign="middle" align="left" class="rowFld' . $i . '">' . $record['medical_record_no'] . '</td>
 		
-		<td valign="middle" align="left" class="rowFld' . $i . '"><a href="http://vc.ocirs.com/index.php?session_id=' . $record['session_id'] . '">Link</a></td>
+		<td valign="middle" align="left" class="rowFld' . $i . '"><a href="/client/index.php?session_id=' . $record['session_id'] . '">Link</a></td>
 
 		<td valign="middle" align="left" class="rowFld' . $i . '">';
 
 		if($record['survey_completed']) {
-			echo '<a href="/doctor/patient/' . $record['session_id'] . '">Click to view survey result</a>';
+			echo '<a href="../patient/' . $record['session_id'] . '">Click to view survey result</a>';
 		} else {
 			echo 'Survey not finished yet';
 		}
@@ -284,17 +284,17 @@ or use mozilla, chrome or any other browser</strong></h1>
 			$search_str = '';
 		}
 
-		echo '<p align="right" class="pagination"><a href="/doctor/view/' . ($this_page_number - 1) . $search_str . '" class="pagination_anchor"><b>Previous</b></a>';
+		echo '<p align="right" class="pagination"><a href="' . ($this_page_number - 1) . $search_str . '" class="pagination_anchor"><b>Previous</b></a>';
 
 		for($i = 1; $i <= $pages; $i++) {
 			if($i == $this_page_number) {
 				echo '&nbsp;<span class=""><b>' . ($i) . '</b>';
 			} else {
-				echo '</span>&nbsp;<a href="/doctor/view/' . ($i) . $search_str . '" class="pagination_anchor" >' . ($i) . '</a>';
+				echo '</span>&nbsp;<a href="' . ($i) . $search_str . '" class="pagination_anchor" >' . ($i) . '</a>';
 			}
 		}
 
-		echo '&nbsp;<a href="/doctor/view/' . ($this_page_number + 1) . $search_str . '" class="pagination_anchor"><b>Next</b></a></p>';
+		echo '&nbsp;<a href="' . ($this_page_number + 1) . $search_str . '" class="pagination_anchor"><b>Next</b></a></p>';
 	}?>
 
 <form action="http://test.teamkollab.com/pmv/index.php?p=doctor.create_patient_session" method="post" id="submit_session_form">
