@@ -5,6 +5,7 @@
 		<?php 
 			$request_url = explode('/', $_SERVER['REQUEST_URI']); 
 			$subdir = $request_url[1];
+			$subdir = "api";
 		?>
 		<link href="/<?php echo $subdir; ?>/css/styles.css" rel="stylesheet" type="text/css" />
 		<meta name="format-detection" content="telephone=no">
@@ -165,15 +166,15 @@
 		} else {
 			$search_str = '';
 		}
-		echo '<p align="right" class="pagination"><a href="' . ($this_page_number - 1) . $search_str . '" class="pagination_anchor"><b>Previous</b></a>';
+		echo '<p align="right" class="pagination"><a href="/' . $subdir . '/doctor/view/' . ($this_page_number - 1) . $search_str . '" class="pagination_anchor"><b>Previous</b></a>';
 		for($i = 1; $i <= $pages; $i++) {
 			if($i == $this_page_number) {
 				echo '&nbsp;<span class=""><b>' . ($i) . '</b>';
 			} else {
-				echo '</span>&nbsp;<a href="' . ($i) . $search_str . '" class="pagination_anchor" >' . ($i) . '</a>';
+				echo '</span>&nbsp;<a href="/' . $subdir . '/doctor/view/' . ($i) . $search_str . '" class="pagination_anchor" >' . ($i) . '</a>';
 			}
 		}
-		echo '&nbsp;<a href="' . ($this_page_number + 1) . $search_str . '" class="pagination_anchor"><b>Next</b></a></p>';
+		echo '&nbsp;<a href="/' . $subdir . '/doctor/view/' . ($this_page_number + 1) . $search_str . '" class="pagination_anchor"><b>Next</b></a></p>';
 	}?>
 	<form action="http://test.teamkollab.com/pmv/index.php?p=doctor.create_patient_session" method="post" id="submit_session_form">
 	<input type="hidden" name="session_id" id="session_id" value=""/>
@@ -181,7 +182,7 @@
 	<script type="text/javascript">
 		function submit_search(){
 			var search_str = $id("search_str").value;
-			var url = "../view/1/"+urlencode(search_str);
+			var url = "/<?php echo $subdir; ?>/doctor/view/1/"+urlencode(search_str);
 			window.location = url;
 		}
 		
