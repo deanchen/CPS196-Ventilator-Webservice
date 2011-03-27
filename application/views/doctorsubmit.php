@@ -109,7 +109,7 @@ function radio_group_val(id){
 
   <div id="header">
 
-    <div id="logo"><img src="/images/logo.jpg" width="285" height="20" alt="Logo" /></div>
+    <div id="logo"><img src="../../images/logo.jpg" width="285" height="20" alt="Logo" /></div>
 
   </div>
 
