@@ -46,7 +46,7 @@
 
 </script>
 
-<form id="survey_form" method="post" action="/admin">
+<form id="survey_form" method="post" action="../../admin/">
 <?php
 $i = 1;
 foreach($groups as $group)
