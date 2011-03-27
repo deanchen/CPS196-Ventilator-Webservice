@@ -2,7 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>PMV Decision Aid Tool</title>
-		<link href="../../css/styles.css" rel="stylesheet" type="text/css" />
+		<?php 
+			$request_url = explode('/', $_SERVER['REQUEST_URI']); 
+			$subdir = $request_url[1];
+		?>
+		<link href="/<?php echo $subdir; ?>/css/styles.css" rel="stylesheet" type="text/css" />
 		<meta name="format-detection" content="telephone=no">
 		<style>
 			.ieDiv {
@@ -46,6 +50,7 @@
 	</head>
 	
 	<body>
+		
 	<div class="ieDiv">
 	<h1><strong>You are using older version of Internet Explorer. <br/>
 	<br/>
@@ -58,6 +63,7 @@
 	<div id="logo"><img src="../../images/logo.jpg" width="285" height="20" alt="Logo" /></div>
 	</div>
 	<div id="content">
+		
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td valign="top" align="left" class="menuLeftRight">&nbsp;</td>
