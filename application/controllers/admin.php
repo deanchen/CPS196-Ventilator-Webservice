@@ -1,5 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+define('PASSWORD','ventilatorApp');
+
 class Admin extends CI_Controller {
 
 	function __construct()
@@ -9,6 +11,29 @@ class Admin extends CI_Controller {
 
 	function index()
 	{
+		session_start();
+		
+		if(!isset($_SESSION["logged_in"]))
+		{
+			if($this->input->post('log_in') != NULL)
+			{
+				if($this->input->post('password') == PASSWORD)
+				{
+					$_SESSION["logged_in"] = true;
+				}
+				else
+				{
+					$this->load->view('admin_log_in');	
+					return;		
+				}
+			}
+			else
+			{
+				$this->load->view('admin_log_in');	
+				return;		
+			}
+		}	
+			
 		$this->load->model('survey');  	
 		$survey_obj = $this->survey;
 		
