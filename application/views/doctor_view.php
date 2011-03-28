@@ -151,7 +151,7 @@
 		<td valign="middle" align="left" class="rowFld' . $i . '"><a href="/client/index.php?session_id=' . $record['session_id'] . '">Link</a></td>
 		<td valign="middle" align="left" class="rowFld' . $i . '">';
 		if($record['survey_completed']) {
-			echo '<a href="../patient/' . $record['session_id'] . '">Click to view survey result</a>';
+			echo '<a href="/' . $subdir . '/doctor/patient/' . $record['session_id'] . '">Click to view survey result</a>';
 		} else {
 			echo 'Survey not finished yet';
 		}
