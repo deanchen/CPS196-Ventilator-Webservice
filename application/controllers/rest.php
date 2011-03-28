@@ -57,23 +57,8 @@ class Rest extends CI_Controller {
 
       if ($this->input->server('REQUEST_METHOD') == 'POST') {
       	$data = array();
-      	foreach ($_POST as $question_id => $answer) {
-      		$question_id_parts = explode('_', $question_id);
-			if (sizeof($question_id_parts) == 2) {
-				if ($answer != '') {
-					if (!isset($data[$question_id_parts[0]])) {
-						$data[$question_id_parts[0]] = $answer;
-					} else {
-						$data[$question_id_parts[0]] = $answer . "," . $data[$question_id_parts[0]];
-					}
-				}
-			} else {
-				$data[$question_id] = $answer;	
-			}
-			$this->survey->setSurveyCompleted($session_id);
-		}
-		
-		foreach ($data as $question_id => $selected_options) {
+      	foreach ($_POST as $question_id => $selected_options) {
+			$data[$question_id] = $selected_options;	
 			$this->survey->setSurveyResult($session_id,$question_id,$selected_options);	
 		}
 	  } else {
@@ -88,10 +73,13 @@ class Rest extends CI_Controller {
     {
       $data = $this->survey->getSurveyReport($param1);
     }
-    elseif($command =='completed')
-    {
-      $data = $this->survey->isSurveyCompleted($param1);
-    }
+    elseif($command =='completed') {
+	    if ($this->input->server('REQUEST_METHOD') == 'POST') {
+	    	$this->survey->setSurveyCompleted($param1);
+		} else {
+	      $data = $this->survey->isSurveyCompleted($param1);
+	    }
+	}
     $this->load->view('rest',array('callback'=>$callback, 'data' => $data));
   }
   
