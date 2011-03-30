@@ -6,7 +6,7 @@
 <head>
 
 <title>PMV Decision Aid Tool</title>
-
+<link rel="apple-touch-icon" href="../images/icon.jpg"/>
 <link href="../css/styles.css" rel="stylesheet" type="text/css" />
 
 <style>

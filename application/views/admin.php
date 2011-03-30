@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<script type="text/javascript" src="../js/jquery-1.5.1.min.js"></script>
+		<link rel="apple-touch-icon" href="../images/icon.jpg"/>
 	</head>
 <body>
 <h2>Edit Survey</h2>	

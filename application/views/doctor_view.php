@@ -8,6 +8,7 @@
 			$subdir = "api";
 		?>
 		<link href="/<?php echo $subdir; ?>/css/styles.css" rel="stylesheet" type="text/css" />
+		<link rel="apple-touch-icon" href="/<?php echo $subdir; ?>/images/icon.jpg"/>
 		<meta name="format-detection" content="telephone=no">
 		<style>
 			.ieDiv {

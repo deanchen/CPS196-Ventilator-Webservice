@@ -8,6 +8,7 @@
 <title>PMV Decision Aid Tool</title>
 
 <link href="../../css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="apple-touch-icon" href="../../images/icon.jpg"/>
 
 <style>
 
