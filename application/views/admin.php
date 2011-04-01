@@ -52,12 +52,12 @@ $i = 1;
 foreach($groups as $group)
 {
 	echo '<br /><br /><strong>Question Group ' . $i . '</strong>&nbsp;<img onclick="deleteIt(\'group-'.$group['id'].'\');" src="../images/delete.gif" width="15" height="15" />Delete<br /><br />Question Group Header:
-	<br /><input type="text" size="200" value="'.$group['title'].'" name="group-'.$group['id'].'-name"/><ul style="color:white;background-color:#8B8378;border-style:solid;border-color:black">';
+	<br /><input type="text" size="200" value="'.$group['title'].'" name="group-'.$group['id'].'-name"/><ul style="background-color:#AAAAAA;">';
 	
 	$j = 1;
 	foreach($group['questions'] as $question)
 	{
-		echo '<li style="background-color:#458B74;border-style:solid;border-color:black">Question ' . $j . '&nbsp;<img onclick="deleteIt(\'question-'.$group['id'].'-'.$question['id'].'\');" src="../images/delete.gif" width="15" height="15" />Delete<br  />Text:';
+		echo '<li style="background-color:#CCC;">Question ' . $j . '&nbsp;<img onclick="deleteIt(\'question-'.$group['id'].'-'.$question['id'].'\');" src="../images/delete.gif" width="15" height="15" />Delete<br  />Text:';
 		echo '<input type="text" size="200" value="'.$question['question'].'" name="question-'.$group['id'].'-'.$question['id'].'-text"/>';
 		echo '<br /><input type="checkbox" value="1" name="question-'.$group['id'].'-'.$question['id'].'-multi" ';
 		if($question['is_multi_answered'] == 1) { echo 'checked'; }
@@ -66,22 +66,22 @@ foreach($groups as $group)
 		$k = 1;
 		foreach($question['options'] as $option)
 		{
-			echo '<br /><br /><li style="background-color:#CD950C;border-style:solid;border-color:black">Question ' . $j . ' - Answer ' . $k . '&nbsp;<img onclick="deleteIt(\'option-'.$group['id'].'-'.$question['id'].'-'.$option['option_id'].'\');" src="../images/delete.gif" width="15" height="15" />Delete<br />';
+			echo '<br /><br /><li style="background-color:#EEE;">Question ' . $j . ' - Answer ' . $k . '&nbsp;<img onclick="deleteIt(\'option-'.$group['id'].'-'.$question['id'].'-'.$option['option_id'].'\');" src="../images/delete.gif" width="15" height="15" />Delete<br />';
 			echo 'Text: <input type="text" size="200" name="option-'.$group['id'].'-'.$question['id'].'-'.$option['option_id'].'-text" value="' . $option['option_value'] . '" />';
 			echo '<br />Points: <input type="text" name="option-'.$group['id'].'-'.$question['id'].'-'.$option['option_id'].'-points" value="' . $option['points'] . '" /> </li>';
 			$k ++;	
 		}
-		echo '<br /><div style="backgroud-color=blue;text-color=white;" href="" onclick="addOption(this); return false;" id="add_option" viewoption="'.($k).'" viewquestion="'.$j.'" group="'.$group['id'].'" question="'.$question['id'].'"> Click Here to Add Another Answer to this Question</div>';
+		echo '<br /><div style="backgroud-color=blue;" href="" onclick="addOption(this); return false;" id="add_option" viewoption="'.($k).'" viewquestion="'.$j.'" group="'.$group['id'].'" question="'.$question['id'].'"> Click Here to Add Another Answer to this Question</div>';
 		echo '</ul></li><br /><br />';
 		$j ++;
 	}
-	echo '<br /><div style="background-color=blue;text-color=white;" href="" onclick="addQuestion(this); return false;" id="add_question" viewquestion="'.$j.'" group="'.$group['id'].'"> Click Here to Add Another Question to this Group</div>';
+	echo '<br /><div style="background-color=blue;" href="" onclick="addQuestion(this); return false;" id="add_question" viewquestion="'.$j.'" group="'.$group['id'].'"> Click Here to Add Another Question to this Group</div>';
 	echo '</ul>';
 	$i ++;
 }
 ?>
 <br /><br />
-<div style="background-color=blue;text-color=white;" href="" id="add_group" onclick="addGroup(this); return false;"> Click Here to Add Another Question Group</div>
+<div style="background-color=blue;" href="" id="add_group" onclick="addGroup(this); return false;"> Click Here to Add Another Question Group</div>
 <br /><input type="submit" value="Submit Changes" id="submit_button" name="submit" />
 <input type="hidden" name="toDelete">
 </form>
@@ -92,7 +92,7 @@ foreach($groups as $group)
             {
                   var new_field =
                   "<br /><br /><strong>Question Group " + num_groups + "</strong>&nbsp;<img onclick='deleteIt(\"group-"+next_group+"\");' src='../images/delete.gif' width='15' height='15' />Delete<br /><br />Question Group Header:"+
-				  "<br /><input type='text' size='200' value='' name='group-"+next_group+"-name'/><ul style='color:white;background-color:#8B8378;border-style:solid;border-color:black'>"+
+				  "<br /><input type='text' size='200' value='' name='group-"+next_group+"-name'/><ul style='background-color:#AAAAAA;'>"+
 				  '<br /><div href="" onclick="addQuestion(this); return false;" id="add_question" viewquestion="1" group="'+next_group+'">Click to Add Another Question to this Group</div></ul>';
                   $(field).before(new_field);
                   num_groups ++;
@@ -108,7 +108,7 @@ foreach($groups as $group)
                 var viewoption = $(field).attr('viewoption');
                 
                 var new_field =
-                '<br /><li style="background-color:#CD950C;border-style:solid;border-color:black">Question ' + viewquestion + ' - Answer ' + viewoption + '&nbsp;<img onclick="deleteIt(\'option-'+group+'-'+question+'-'+next_option+'\');" src="../images/delete.gif" width="15" height="15" />Delete<br />'
+                '<br /><li style="background-color:#EEE;">Question ' + viewquestion + ' - Answer ' + viewoption + '&nbsp;<img onclick="deleteIt(\'option-'+group+'-'+question+'-'+next_option+'\');" src="../images/delete.gif" width="15" height="15" />Delete<br />'
 				+ 'Text: <input type="text" size="200" name="option-'+group+'-'+question+'-'+next_option+'-text" value="" />'
 				+ '<br />Points: <input type="text" name="option-'+group+'-'+question+'-'+next_option+'-points" value="0" /> </li><br />';
                 $(field).before(new_field);
@@ -122,7 +122,7 @@ foreach($groups as $group)
                 var group = $(field).attr('group');
                 var viewquestion = $(field).attr('viewquestion');
                 
-                var new_field = '<br /><li style="background-color:#458B74;border-style:solid;border-color:black">Question ' + viewquestion + '&nbsp;<img onclick="deleteIt(\'question-'+group+'-'+next_question+'\');" src="../images/delete.gif" width="15" height="15" />Delete<br />Text:'
+                var new_field = '<br /><li style="background-color:#CCC;">Question ' + viewquestion + '&nbsp;<img onclick="deleteIt(\'question-'+group+'-'+next_question+'\');" src="../images/delete.gif" width="15" height="15" />Delete<br />Text:'
 				+ '<input type="text" size="200" value="" name="question-'+group+'-'+next_question+'-text"/>'
 				+ '<br /><input type="checkbox" value="1" name="question-'+group+'-'+next_question+'-multi" '
 				+ '/>Allow multiple answers?<ul>'
