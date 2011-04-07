@@ -5,7 +5,7 @@
 <body>
 <h2>Edit Survey</h2>
 
-<?php if($msg != null) { echo "<strong>".$msg."</strong><br /><br />"; }?>
+<?php if($msg != null) { echo "<strong style='color:green;'>".$msg."</strong><br /><br />"; }?>
 
 After you make a change, remember to press Enter or the "Submit" button at the bottom to save your changes!
 <br /><br />The survey is divided up into question groups. A question group represents a page of questions.
@@ -146,8 +146,12 @@ foreach($groups as $group)
             
             function deleteIt(command)
             {
-            	$('input[name="toDelete"]').attr('value',command);
-            	$('#submit_button').click();
+            	var answer = confirm("Do you really want to delete this?");
+ 				if (answer == true)
+ 				{
+   					$('input[name="toDelete"]').attr('value',command);
+            		$('#submit_button').click();
+ 				}
             }
 </script>
 </body></html>
