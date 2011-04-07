@@ -82,17 +82,17 @@ foreach($groups as $group)
 			echo '<br />Points: <input type="text" name="option-'.$group['id'].'-'.$question['id'].'-'.$option['option_id'].'-points" value="' . $option['points'] . '" /> </li>';
 			$k ++;	
 		}
-		echo '<br /><a style="backgroud-color=blue;" href="" onclick="addOption(this); return false;" id="add_option" viewoption="'.($k).'" viewquestion="'.$j.'" group="'.$group['id'].'" question="'.$question['id'].'"> Click Here to Add Another Answer to this Question</a>';
+		echo '<br /><a href="" onclick="addOption(this); return false;" id="add_option" viewoption="'.($k).'" viewquestion="'.$j.'" group="'.$group['id'].'" question="'.$question['id'].'"> Click Here to Add Another Answer to this Question</a>';
 		echo '</ul></li><br /><br />';
 		$j ++;
 	}
-	echo '<br /><a style="background-color=blue;" href="" onclick="addQuestion(this); return false;" id="add_question" viewquestion="'.$j.'" group="'.$group['id'].'"> Click Here to Add Another Question to this Group</a>';
+	echo '<br /><a href="" onclick="addQuestion(this); return false;" id="add_question" viewquestion="'.$j.'" group="'.$group['id'].'"> Click Here to Add Another Question to this Group</a>';
 	echo '</ul>';
 	$i ++;
 }
 ?>
 <br /><br />
-<a style="background-color=blue;" href="" id="add_group" onclick="addGroup(this); return false;"> Click Here to Add Another Question Group</a>
+<a href="" id="add_group" onclick="addGroup(this); return false;"> Click Here to Add Another Question Group</a>
 <br /><br /><input type="submit" value="Submit Changes" id="submit_button" name="submit" />
 <input type="hidden" name="toDelete">
 </form>
