@@ -3,7 +3,18 @@
 		<script type="text/javascript" src="../js/jquery-1.5.1.min.js"></script>
 	</head>
 <body>
-<h2>Edit Survey</h2>	
+<h2>Edit Survey</h2>
+
+<?php if($msg != null) { echo "<strong>".$msg."</strong><br /><br />"; }?>
+
+After you make a change, remember to press Enter or the "Submit" button at the bottom to save your changes!
+<br /><br />The survey is divided up into question groups. A question group represents a page of questions.
+<br /><br />Each question has text, and one of more answers. Selecting the "Multiple Answers" field of the question will allow multiple answers to be selected.
+<br /><br />An answer has both text and a point value. This point value represent how much this answer shows the person who took the survey's inclination towards removing life support.
+<br />Higher point value means more inclination towards removing life support (comfort) vs keeping life support (survival).
+<br />Ex: After all questions have been answered, an overall sum of greater than or equal to 8 points means the person has a high inclination towards removing life support (comfort).
+<br />Ex: After all questions have been answered, an overall sum of less than or equal to 2 points means the person has a low inclination towards removing life support (survival).
+<br />Generally, an answer should give 0, 1, 2, or 3 points. 0 adds no inclination towards removing life support, while 3 adds a considerable amount of inclination towards removing life support.
 <script type="text/javascript">
 	var num_groups = <?php echo (count($groups)+1); ?>;
 	
@@ -71,18 +82,18 @@ foreach($groups as $group)
 			echo '<br />Points: <input type="text" name="option-'.$group['id'].'-'.$question['id'].'-'.$option['option_id'].'-points" value="' . $option['points'] . '" /> </li>';
 			$k ++;	
 		}
-		echo '<br /><div style="backgroud-color=blue;" href="" onclick="addOption(this); return false;" id="add_option" viewoption="'.($k).'" viewquestion="'.$j.'" group="'.$group['id'].'" question="'.$question['id'].'"> Click Here to Add Another Answer to this Question</div>';
+		echo '<br /><a style="backgroud-color=blue;" href="" onclick="addOption(this); return false;" id="add_option" viewoption="'.($k).'" viewquestion="'.$j.'" group="'.$group['id'].'" question="'.$question['id'].'"> Click Here to Add Another Answer to this Question</a>';
 		echo '</ul></li><br /><br />';
 		$j ++;
 	}
-	echo '<br /><div style="background-color=blue;" href="" onclick="addQuestion(this); return false;" id="add_question" viewquestion="'.$j.'" group="'.$group['id'].'"> Click Here to Add Another Question to this Group</div>';
+	echo '<br /><a style="background-color=blue;" href="" onclick="addQuestion(this); return false;" id="add_question" viewquestion="'.$j.'" group="'.$group['id'].'"> Click Here to Add Another Question to this Group</a>';
 	echo '</ul>';
 	$i ++;
 }
 ?>
 <br /><br />
-<div style="background-color=blue;" href="" id="add_group" onclick="addGroup(this); return false;"> Click Here to Add Another Question Group</div>
-<br /><input type="submit" value="Submit Changes" id="submit_button" name="submit" />
+<a style="background-color=blue;" href="" id="add_group" onclick="addGroup(this); return false;"> Click Here to Add Another Question Group</a>
+<br /><br /><input type="submit" value="Submit Changes" id="submit_button" name="submit" />
 <input type="hidden" name="toDelete">
 </form>
 
@@ -93,7 +104,7 @@ foreach($groups as $group)
                   var new_field =
                   "<br /><br /><strong>Question Group " + num_groups + "</strong>&nbsp;<img onclick='deleteIt(\"group-"+next_group+"\");' src='../images/delete.gif' width='15' height='15' />Delete<br /><br />Question Group Header:"+
 				  "<br /><input type='text' size='200' value='' name='group-"+next_group+"-name'/><ul style='background-color:#AAAAAA;'>"+
-				  '<br /><div href="" onclick="addQuestion(this); return false;" id="add_question" viewquestion="1" group="'+next_group+'">Click to Add Another Question to this Group</div></ul>';
+				  '<br /><a href="" onclick="addQuestion(this); return false;" id="add_question" viewquestion="1" group="'+next_group+'">Click to Add Another Question to this Group</a></ul>';
                   $(field).before(new_field);
                   num_groups ++;
                   next_group ++;
@@ -126,7 +137,7 @@ foreach($groups as $group)
 				+ '<input type="text" size="200" value="" name="question-'+group+'-'+next_question+'-text"/>'
 				+ '<br /><input type="checkbox" value="1" name="question-'+group+'-'+next_question+'-multi" '
 				+ '/>Allow multiple answers?<ul>'
-				+ '<br /><div href="" onclick="addOption(this); return false;" id="add_option" viewoption="1" viewquestion="'+viewquestion+'" group="'+group+'" question="'+next_question+'"> Click Here to Add Another Answer to this Question</div>'
+				+ '<br /><a href="" onclick="addOption(this); return false;" id="add_option" viewoption="1" viewquestion="'+viewquestion+'" group="'+group+'" question="'+next_question+'"> Click Here to Add Another Answer to this Question</a>'
 				+ '</ul></li><br /><br />';
                 $(field).before(new_field);
                 $(field).attr('viewquestion',(parseInt(viewquestion)+1));

@@ -41,7 +41,7 @@
 								$print_content .= '<input type="hidden" id="survey_ques_check_opts_'.$option['question_id'].'" name="survey_ques_check_opts_'.$option['question_id'].'" value="'.$option['option_id'].','.count($question['options']).','.$question['question'].'"/>';
 								$checkbox_flag=1;
 							}
-							$print_content .= '<input type="checkbox"';
+							$print_content .= '<input type="checkbox" disabled ';
 							if($option['option_id'] == $option['selected_option_id'])
 							$print_content .= 'checked="checked"';
 							$print_content .= 'name="survey_ques_check_'.$option['option_id'].'" id="survey_ques_'.$option['option_id'].'" value="'.$option['question_id'].','.$option['option_id'].'" class="surveyRadio" />';
@@ -53,7 +53,7 @@
 								$print_content .= '<input type="hidden" id="survey_ques_radio_opts_'.$option['question_id'].'" name="survey_ques_radio_opts_'.$option['question_id'].'" value="'.$question['question'].'"/>';
 								$radio_flag=$i;
 							}
-							$print_content .= '<input type="radio"';
+							$print_content .= '<input type="radio" disabled ';
 							if($option['option_id'] == $option['selected_option_id'])
 							$print_content .= ' checked="checked"';
 							$print_content .= 'name="survey_ques_radio_'.$option['question_id'].'" id="survey_ques_'.$option['option_id'].'" value="'.$option['question_id'].','.$option['option_id'].'" class="surveyRadio" />';

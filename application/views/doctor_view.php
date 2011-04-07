@@ -129,7 +129,7 @@
 	<td valign="middle" align="left" class="rowHd">Patient Name</td>
 	<td valign="middle" align="left" class="rowHd">Session ID</td>
 	<td valign="middle" align="left" class="rowHd">Medical Record Number</td>
-	<td valign="middle" align="left" class="rowHd">Survey Link</td>
+	<td valign="middle" align="left" class="rowHd">Take The Survey</td>
 	<td valign="middle" align="left" class="rowHd">Results</td>
 	</tr>
 	<?php
@@ -149,7 +149,7 @@
 		<td valign="middle" align="left" class="rowFld' . $i . '">' . $record['name'] . '</td>
 		<td valign="middle" align="left" class="rowFld' . $i . '">' . $session_id . '</td>
 		<td valign="middle" align="left" class="rowFld' . $i . '">' . $record['medical_record_no'] . '</td>
-		<td valign="middle" align="left" class="rowFld' . $i . '"><a href="/client/index.php?session_id=' . $record['session_id'] . '">Link</a></td>
+		<td valign="middle" align="left" class="rowFld' . $i . '"><a href="/client/index.php?session_id=' . $record['session_id'] . '">Survey</a></td>
 		<td valign="middle" align="left" class="rowFld' . $i . '">';
 		if($record['survey_completed']) {
 			echo '<a href="/' . $subdir . '/doctor/patient/' . $record['session_id'] . '">Click to view survey result</a>';

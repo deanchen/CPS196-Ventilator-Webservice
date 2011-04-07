@@ -61,30 +61,29 @@ function $id(id){
 
 function radio_group_val(id){
 
-  for(var i=0;i<document.getElementsByName(id).length;i++){
+	for(var i=0;i<document.getElementsByName(id).length;i++){
 
-    var chked = 0;
+		var chked = 0;
 
-    if(document.getElementsByName(id)[i].checked){
+		if(document.getElementsByName(id)[i].checked){
 
-      chked=1;
+			chked=1;
 
-      break;
+			break;
 
-    }
+		}
 
-  }
+	}
 
-  if(!chked)
+	if(!chked)
 
-  return false;
+	return false;
 
-  else
+	else
 
-  return true;
+	return true;
 
 }
-
 </script>
 
 </head>
@@ -205,7 +204,7 @@ function radio_group_val(id){
 
   <div id="contentPanel3">
 
-    <div id="workArea">       <form action="submit/" method="post" name="patient_details_form" id="patient_details_form" onsubmit="validate();">
+    <div id="workArea">       <form action="submit/" onkeypress="submit_on_enter(event);" method="post" name="patient_details_form" id="patient_details_form" onsubmit="validate();">
 
   <div class="heading">
 
@@ -307,7 +306,7 @@ function radio_group_val(id){
 
   <div class="surveyOptions">
 
-  <p> <a href="#" class="button" onclick="validate()" onkeypress="submit_on_enter(event)" ><span>Submit</span></a></p></div>
+  <p> <a href="#" class="button" onclick="validate()"><span>Submit</span></a></p></div>
 
 </form>
 
@@ -363,7 +362,7 @@ function validate(){
 
   }
 
-        if(!radio_group_val("params[selected_health_param_option_1]")){
+         if(!radio_group_val("params[selected_health_param_option_1]")){
 
         alert("Please select a value for On Vasopressors ");
 

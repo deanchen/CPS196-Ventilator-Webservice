@@ -50,43 +50,6 @@
 </style>
 
 <![endif]-->
-
-<script type="text/javascript">
-
-function $id(id){ 
-
-  return document.getElementById(id);
-
-}
-
-function radio_group_val(id){
-
-  for(var i=0;i<document.getElementsByName(id).length;i++){
-
-    var chked = 0;
-
-    if(document.getElementsByName(id)[i].checked){
-
-      chked=1;
-
-      break;
-
-    }
-
-  }
-
-  if(!chked)
-
-  return false;
-
-  else
-
-  return true;
-
-}
-
-</script>
-
 </head>
 
 <body>
@@ -226,49 +189,7 @@ function radio_group_val(id){
 <p><br /><br />Please navigate to the <strong>View Patients</strong> page on the iPad device, find this patient, and then click on the Link field for this patient to allow the patient's family to use the ventilator app.</p>
 
 </div>
-
-<form action="http://test.teamkollab.com/pmv/index.php?p=doctor.create_patient_session" method="post" id="submit_session_form">
-
-  <input type="hidden" name="session_id" id="session_id" value=""/>
-
-</form>
-
-<script type="text/javascript">
-
-function submit_session_id(id){
-
-  $id("session_id").value = id;
-
-  $id("submit_session_form").submit();
-
-}
-
-function submit_on_enter(e,index){
-
-   e = (window.event) ? window.event : e;
-
-  if(e.which || e.keyCode){
-
-    if ((e.which == 13) || (e.keyCode == 13) || (e.which == 32) || (e.keyCode == 32)){
-
-      if(index == 1)
-
-      window.location = "http://test.teamkollab.com/pmv/index.php?p=user.welcome";
-
-      else
-
-      window.print();   
-
-    }
-
-  }
-
-}
-
-$id("user_link").focus();
-
-</script>
-       </div>
+</div>
 
   </div>
 

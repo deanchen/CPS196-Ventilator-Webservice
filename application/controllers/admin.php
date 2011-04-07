@@ -21,10 +21,12 @@ class Admin extends CI_Controller {
 		{			
 			$this->load->model('survey');  	
 			$survey_obj = $this->survey;
+			$msg = null;
 			
 			if(isset($_POST['submit']) && $_POST['submit'] == 'Submit Changes')
 			{
 				$survey_obj->updateSurvey($_POST);
+				$msg = "Changes Saved!";
 			}
 			
 			$result = $survey_obj->getSurveyQuestionGroups();
@@ -54,7 +56,7 @@ class Admin extends CI_Controller {
 				}
 			}
 			
-	  		$data = array('groups' => $groups);
+	  		$data = array('groups' => $groups, 'msg' => $msg);
 	          
 	    	$this->load->view('admin',$data);
 	    }
