@@ -1,10 +1,10 @@
 <?php 
 define('PASSWORD','ventilatorApp');
+session_start();
 
 function checkLogIn($page)
 {
-	$message = '';
-	session_start();
+	$message = '';	
 			
 	if(!isset($_SESSION["logged_in"]))
 	{
@@ -34,5 +34,10 @@ function checkLogIn($page)
 	{
 		return true;		
 	}
+}
+
+function logOut()
+{
+	unset($_SESSION["logged_in"]);
 }
 ?>
