@@ -1,16 +1,22 @@
-phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- phpMyAdmin SQL Dump
+-- version 2.11.6
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 12, 2011 at 10:30 PM
--- Server version: 5.1.36
--- PHP Version: 5.3.0
+-- Generation Time: Nov 04, 2010 at 02:12 PM
+-- Server version: 5.0.51
+-- PHP Version: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
 --
--- Database: `ventilator`
+-- Database: `pmv`
 --
 
 -- --------------------------------------------------------
@@ -19,14 +25,14 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `tbl_health_params`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_health_params` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_health_params` (
+  `id` int(11) NOT NULL auto_increment,
   `param` varchar(200) NOT NULL,
   `is_mandatory` tinyint(1) NOT NULL,
   `is_multi_answered` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
@@ -44,14 +50,14 @@ INSERT INTO `tbl_health_params` (`id`, `param`, `is_mandatory`, `is_multi_answer
 -- Table structure for table `tbl_health_params_options`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_health_params_options` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_health_params_options` (
+  `id` int(11) NOT NULL auto_increment,
   `health_param_id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `points` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
@@ -69,80 +75,22 @@ INSERT INTO `tbl_health_params_options` (`id`, `health_param_id`, `name`, `point
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_passwords`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_passwords` (
-  `user_level` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`user_level`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_passwords`
---
-
-INSERT INTO `tbl_passwords` (`user_level`, `password`) VALUES
-('Admin', 'cfe3476f784d0f55b2005b41b7e6bf35acc05f51'),
-('Doctor', '1bc36a43ce94d5b010ad154d35b1699bf543efb4');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_patient_health_params`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_patient_health_params` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_patient_health_params` (
+  `id` int(11) NOT NULL auto_increment,
   `session_id` int(11) NOT NULL,
   `health_param_id` int(11) NOT NULL,
   `selected_health_param_option_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `tbl_patient_health_params`
 --
-
-INSERT INTO `tbl_patient_health_params` (`id`, `session_id`, `health_param_id`, `selected_health_param_option_id`, `created_at`, `updated_at`) VALUES
-(1, 1358969916, 1, 1, '2010-09-24 21:28:15', '0000-00-00 00:00:00'),
-(2, 1358969916, 2, 4, '2010-09-24 21:28:15', '0000-00-00 00:00:00'),
-(3, 1358969916, 3, 5, '2010-09-24 21:28:15', '0000-00-00 00:00:00'),
-(4, 1073646085, 1, 1, '2010-09-25 10:53:18', '0000-00-00 00:00:00'),
-(5, 1073646085, 2, 3, '2010-09-25 10:53:18', '0000-00-00 00:00:00'),
-(6, 1073646085, 3, 5, '2010-09-25 10:53:18', '0000-00-00 00:00:00'),
-(7, 1378454530, 1, 1, '2010-09-25 12:02:52', '0000-00-00 00:00:00'),
-(8, 1378454530, 2, 3, '2010-09-25 12:02:52', '0000-00-00 00:00:00'),
-(9, 1378454530, 3, 5, '2010-09-25 12:02:52', '0000-00-00 00:00:00'),
-(10, 1108047629, 1, 2, '2010-09-25 16:10:35', '0000-00-00 00:00:00'),
-(11, 1108047629, 2, 4, '2010-09-25 16:10:35', '0000-00-00 00:00:00'),
-(12, 1108047629, 3, 6, '2010-09-25 16:10:35', '0000-00-00 00:00:00'),
-(13, 1305797067, 1, 2, '2010-09-25 17:33:48', '0000-00-00 00:00:00'),
-(14, 1305797067, 2, 3, '2010-09-25 17:33:48', '0000-00-00 00:00:00'),
-(15, 1305797067, 3, 6, '2010-09-25 17:33:48', '0000-00-00 00:00:00'),
-(16, 1203443400, 1, 1, '2010-09-27 11:14:53', '0000-00-00 00:00:00'),
-(17, 1203443400, 2, 3, '2010-09-27 11:14:53', '0000-00-00 00:00:00'),
-(18, 1203443400, 3, 5, '2010-09-27 11:14:53', '0000-00-00 00:00:00'),
-(19, 1148368392, 1, 2, '2010-11-01 15:33:50', '0000-00-00 00:00:00'),
-(20, 1148368392, 2, 4, '2010-11-01 15:33:50', '0000-00-00 00:00:00'),
-(21, 1148368392, 3, 6, '2010-11-01 15:33:50', '0000-00-00 00:00:00'),
-(22, 1090352546, 1, 1, '2010-11-01 16:04:37', '0000-00-00 00:00:00'),
-(23, 1090352546, 2, 3, '2010-11-01 16:04:37', '0000-00-00 00:00:00'),
-(24, 1090352546, 3, 5, '2010-11-01 16:04:37', '0000-00-00 00:00:00'),
-(25, 1075310474, 1, 2, '2010-11-01 16:17:58', '0000-00-00 00:00:00'),
-(26, 1075310474, 2, 4, '2010-11-01 16:17:58', '0000-00-00 00:00:00'),
-(27, 1075310474, 3, 6, '2010-11-01 16:17:58', '0000-00-00 00:00:00'),
-(28, 1310890348, 1, 1, '2010-11-01 18:33:41', '0000-00-00 00:00:00'),
-(29, 1310890348, 2, 3, '2010-11-01 18:33:41', '0000-00-00 00:00:00'),
-(30, 1310890348, 3, 5, '2010-11-01 18:33:41', '0000-00-00 00:00:00'),
-(31, 1294434171, 1, 2, '2010-11-01 18:36:14', '0000-00-00 00:00:00'),
-(32, 1294434171, 2, 4, '2010-11-01 18:36:14', '0000-00-00 00:00:00'),
-(33, 1294434171, 3, 6, '2010-11-01 18:36:14', '0000-00-00 00:00:00'),
-(34, 1310489893, 1, 2, '2010-11-03 13:52:37', '0000-00-00 00:00:00'),
-(35, 1310489893, 2, 4, '2010-11-03 13:52:37', '0000-00-00 00:00:00'),
-(36, 1310489893, 3, 6, '2010-11-03 13:52:37', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -150,22 +98,21 @@ INSERT INTO `tbl_patient_health_params` (`id`, `session_id`, `health_param_id`, 
 -- Table structure for table `tbl_patient_sessions`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_patient_sessions` (
-  `session_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_patient_sessions` (
+  `session_id` int(11) NOT NULL auto_increment,
   `name` varchar(200) NOT NULL,
   `medical_record_no` varchar(200) NOT NULL,
   `age` varchar(200) NOT NULL,
   `platelets` varchar(200) NOT NULL,
-  `survey_completed` tinyint(1) NOT NULL DEFAULT '0',
+  `survey_completed` tinyint(1) NOT NULL default '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`session_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY  (`session_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1378454531 ;
 
 --
 -- Dumping data for table `tbl_patient_sessions`
 --
-
 
 -- --------------------------------------------------------
 
@@ -173,20 +120,19 @@ CREATE TABLE IF NOT EXISTS `tbl_patient_sessions` (
 -- Table structure for table `tbl_patient_survey_data`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_patient_survey_data` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_patient_survey_data` (
+  `id` int(11) NOT NULL auto_increment,
   `session_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
   `selected_option_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=78 ;
 
 --
 -- Dumping data for table `tbl_patient_survey_data`
 --
-
 
 -- --------------------------------------------------------
 
@@ -194,15 +140,15 @@ CREATE TABLE IF NOT EXISTS `tbl_patient_survey_data` (
 -- Table structure for table `tbl_survey_options`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_survey_options` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_survey_options` (
+  `id` int(11) NOT NULL auto_increment,
   `question_id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `points` int(11) NOT NULL,
   `break_required` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
 
 --
@@ -256,15 +202,15 @@ INSERT INTO `tbl_survey_options` (`id`, `question_id`, `name`, `points`, `break_
 -- Table structure for table `tbl_survey_questions`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_survey_questions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_survey_questions` (
+  `id` int(11) NOT NULL auto_increment,
   `question` text NOT NULL,
   `is_mandatory` tinyint(1) NOT NULL,
   `is_multi_answered` tinyint(1) NOT NULL,
   `questions_group_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
@@ -288,12 +234,12 @@ INSERT INTO `tbl_survey_questions` (`id`, `question`, `is_mandatory`, `is_multi_
 -- Table structure for table `tbl_survey_question_groups`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_survey_question_groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_survey_question_groups` (
+  `id` int(11) NOT NULL auto_increment,
   `title` varchar(200) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
@@ -306,3 +252,23 @@ INSERT INTO `tbl_survey_question_groups` (`id`, `title`, `created_at`, `updated_
 (3, 'What type of role are you most comfortable with in this decision about goals of treatment?', '2010-09-16 12:49:18', '2010-09-16 12:49:20'),
 (4, 'How is this choice making you feel?', '2010-09-16 12:49:46', '2010-09-16 12:49:48'),
 (5, 'What questions do you need answered before you can decide?', '2010-09-23 21:22:47', '2010-09-23 21:22:49');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_passwords`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_passwords` (
+  `user_level` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`user_level`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_passwords`
+--
+
+INSERT INTO `tbl_passwords` (`user_level`, `password`) VALUES
+('Admin', 'cfe3476f784d0f55b2005b41b7e6bf35acc05f51'),
+('Doctor', '1bc36a43ce94d5b010ad154d35b1699bf543efb4');

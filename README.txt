@@ -28,7 +28,7 @@ Configuring and deploying the PMV Decision Aid Tool:
 
 Aquire a hosting account or server that allows PHP and MySQL and domain name.
 
-Set up the databases used by this web application. Create a database, and the import into it the SQL found in the db_schemas.txt file
+Set up the databases used by this web application. Create a database, and the import into it the SQL found in the db_schemas.sql file
 in this folder.
 
 Go into /api/application/config and copy database-sample.php to database.php. Open the database.php file and fill in the 
