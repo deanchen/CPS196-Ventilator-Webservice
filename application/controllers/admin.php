@@ -1,7 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-require_once('log_in.php');
-
 class Admin extends CI_Controller {
 
 	function __construct()
@@ -16,8 +14,9 @@ class Admin extends CI_Controller {
 		{
 			header('Location: ' . $str . '/');
 		}
-			
-		if(checkLogin($this))
+		
+		$this->load->model('passwords'); 
+		if($this->passwords->checkLogin($this,'Admin'))
 		{			
 			$this->load->model('survey');  	
 			$survey_obj = $this->survey;

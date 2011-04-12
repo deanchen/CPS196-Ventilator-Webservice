@@ -1,7 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-require_once('log_in.php');
-
 class Doctor extends CI_Controller {
 
 	function __construct()
@@ -11,7 +9,8 @@ class Doctor extends CI_Controller {
 
 	function index()
 	{
-		if(checkLogin($this))
+		$this->load->model('passwords'); 	
+		if($this->passwords->checkLogin($this,'Doctor'))
 		{
 			$this->load->view('doctor');
 		}
@@ -19,7 +18,8 @@ class Doctor extends CI_Controller {
 	
   function patient($sessionID)
   {
-	 if(checkLogin($this))
+	 $this->load->model('passwords'); 	
+	 if($this->passwords->checkLogin($this,'Doctor'))
 	 { 
 	  	$this->load->model('survey');  	
 		
@@ -35,7 +35,8 @@ class Doctor extends CI_Controller {
   
   function patient_answers($sessionID)
   {
-	 if(checkLogin($this))
+	 $this->load->model('passwords');  	
+	 if($this->passwords->checkLogin($this,'Doctor'))
 	 { 		
 	  	$this->load->model('survey');  	
 		$survey_obj = $this->survey;
@@ -85,7 +86,8 @@ class Doctor extends CI_Controller {
   
   function view($page=1,$searchString=NULL)
   {
-	if(checkLogin($this))	
+	$this->load->model('passwords'); 
+	if($this->passwords->checkLogin($this,'Doctor'))	
 	{ 
 	  $PAGE_SIZE = 10;
 	    
@@ -119,7 +121,8 @@ class Doctor extends CI_Controller {
   
   function submit()
   {
-	 if(checkLogin($this))
+	 $this->load->model('passwords'); 
+	 if($this->passwords->checkLogin($this,'Doctor'))
 	 {
 	    $this->load->model('patient_session'); 
 	    $id = $this->patient_session->generateSession($_POST['params']);
@@ -131,6 +134,3 @@ class Doctor extends CI_Controller {
 	 }
   }
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
