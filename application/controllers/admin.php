@@ -15,6 +15,12 @@ class Admin extends CI_Controller {
 	 */
 	function index()
 	{
+		$str = $_SERVER["REQUEST_URI"];	
+		if($str[strlen($str)-1] != '/')
+		{
+			header('Location: ' . $str . '/');
+		}
+		
 		$this->load->model('passwords'); 
 		if($this->passwords->checkLogin($this,'Admin'))
 		{			
