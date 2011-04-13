@@ -1,5 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/*
+ * This is the controller for all of the functionality the admin has
+ */
 class Admin extends CI_Controller {
 
 	function __construct()
@@ -7,6 +10,9 @@ class Admin extends CI_Controller {
 		parent::__construct();
 	}
 	
+	/*
+	 * Controller for the main admin page where he/she can choose what to administrate
+	 */
 	function index()
 	{
 		$this->load->model('passwords'); 
@@ -16,6 +22,9 @@ class Admin extends CI_Controller {
 		}
 	}
 	
+	/*
+	 * Controller for the pages where the admin can change the admin or doctor password
+	 */
 	function passwords($user_type)
 	{
 		$user_type = ucwords($user_type);
@@ -31,7 +40,10 @@ class Admin extends CI_Controller {
 			$this->load->view('admin_passwords',$data);
 		}
 	}
-
+	
+	/*
+	 * Controller for the page where the admin can change the survey
+	 */
 	function survey()
 	{
 		$str = $_SERVER["REQUEST_URI"];	

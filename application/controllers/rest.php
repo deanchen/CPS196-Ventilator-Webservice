@@ -1,5 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/*
+ * Controller for all REST api functionality
+ */
 class Rest extends CI_Controller {
 
 	function __construct()
@@ -7,12 +10,17 @@ class Rest extends CI_Controller {
 		parent::__construct();
 	}
 
+	/**
+	 * Controller for the REST api documentation
+	 */
 	function index()
 	{
 		$this->load->view('api_docs');
 	}
 	
-
+  /*
+   * Controller to return specific patient details
+   */
   function patient($sessionID)
   {
   	$callback = $this->input->get('callback', NULL);
@@ -22,6 +30,9 @@ class Rest extends CI_Controller {
     $this->load->view('rest',array('callback'=>$callback, 'data' => $data));
   }
   
+  /*
+   * Controller to return  a patient's survival percentages
+   */
   function report($sessionID)
   {
   	$callback = $this->input->get('callback', NULL);
@@ -31,6 +42,9 @@ class Rest extends CI_Controller {
     $this->load->view('rest',array('callback'=>$callback, 'data' => $data));
   }
   
+  /*
+   * Controller to return health params
+   */
   function health_params()
   {
   	$callback = $this->input->get('callback', NULL);
@@ -40,6 +54,9 @@ class Rest extends CI_Controller {
     $this->load->view('rest',array('callback'=>$callback, 'data' => $data));
   }
   
+  /*
+   * Controller to return or insert survey info, differing info depending on what command was passed in
+   */
   function survey($command,$param1 = NULL,$param2 = NULL)
   {
   	$callback = $this->input->get('callback', NULL);
@@ -83,6 +100,9 @@ class Rest extends CI_Controller {
     $this->load->view('rest',array('callback'=>$callback, 'data' => $data));
   }
   
+  /*
+   * Controller to return if a session is valid
+   */
   function session($command,$param)
   {
   	$callback = $this->input->get('callback', NULL);
