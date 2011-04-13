@@ -6,7 +6,7 @@
 			session_start();
 			$message = '';	
 			
-			if(!isset($_SESSION["logged_in"]))
+			if(!isset($_SESSION[$user_level]))
 			{
 				if($page->input->post('password') != NULL)
 				{
@@ -21,7 +21,7 @@
 					
 					if($data === true)
 					{
-						$_SESSION["logged_in"] = true;
+						$_SESSION[$user_level] = true;
 						return true;
 					}
 					else
@@ -48,7 +48,8 @@
 		function logOut()
 		{
 			session_start();
-			unset($_SESSION["logged_in"]);
+			unset($_SESSION['Admin']);
+			unset($_SESSION['Doctor']);
 		}	
 				
 		function changeAdminPassword($old_password,$new_password)
@@ -92,14 +93,18 @@
 				}
 		}
 		
-		private function changePassword($old_password,$new_password,$user_level)
+		function changePassword($old_password,$new_password,$new_password_confirm,$user_level)
 		{
 			
-			if($this->checkPassword($old_password,$user_level))
+			if($this->checkPassword($old_password,$user_level) === true)
 			{
 				if(strlen($new_password) < 4)
 				{
-					return "New Password must be atleast 4 characters long";
+					return "New password must be atleast 4 characters long";
+				}	
+				elseif($new_password != $new_password_confirm)
+				{
+					return "The new passwords do not match";
 				}	
 				else
 				{

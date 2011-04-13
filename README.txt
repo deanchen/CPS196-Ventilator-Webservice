@@ -15,6 +15,7 @@ All css files used by the system are contained in the /api/css folder.
 All javascript files used by the system are contained in the /api/js folder.
 All images used by the system are contained in the /api/images folder.
 The /api/system folder is the CodeIgniter framework - you will not need to touch this.
+The /api/user_guide/ folder is the user guide on how to use CodeIgniter
 
 The /api/application folder contains the core of the web application, implemented using CodeIgniter.
 Read the CodeIgniter documentation for details, but the gist is that the functionality is contained
@@ -28,7 +29,7 @@ Configuring and deploying the PMV Decision Aid Tool:
 
 Aquire a hosting account or server that allows PHP and MySQL and domain name.
 
-Set up the databases used by this web application. Create a database, and the import into it the SQL found in the db_schemas.sql file
+Set up the database used by this web application. Create a database, and the import into it the SQL found in the db_schemas.sql file
 in this folder.
 
 Go into /api/application/config and copy database-sample.php to database.php. Open the database.php file and fill in the 

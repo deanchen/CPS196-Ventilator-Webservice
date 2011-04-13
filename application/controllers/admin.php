@@ -6,8 +6,33 @@ class Admin extends CI_Controller {
 	{
 		parent::__construct();
 	}
-
+	
 	function index()
+	{
+		$this->load->model('passwords'); 
+		if($this->passwords->checkLogin($this,'Admin'))
+		{			
+			$this->load->view('admin');
+		}
+	}
+	
+	function passwords($user_type)
+	{
+		$user_type = ucwords($user_type);
+		$data = array("user_type" => $user_type, "message" => "");
+		$this->load->model('passwords'); 
+		if($this->passwords->checkLogin($this,'Admin'))
+		{
+			if($this->input->post('changepword') != NULL)
+			{
+				$msg = $this->passwords->changePassword($this->input->post('old_password'),$this->input->post('new_password'),$this->input->post('new_password2'),$user_type);
+				$data["message"] = $msg;
+			}	
+			$this->load->view('admin_passwords',$data);
+		}
+	}
+
+	function survey()
 	{
 		$str = $_SERVER["REQUEST_URI"];	
 		if($str[strlen($str)-1] != '/')
@@ -57,7 +82,7 @@ class Admin extends CI_Controller {
 			
 	  		$data = array('groups' => $groups, 'msg' => $msg);
 	          
-	    	$this->load->view('admin',$data);
+	    	$this->load->view('admin_survey',$data);
 	    }
 	}
 }
