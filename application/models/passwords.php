@@ -1,6 +1,16 @@
 <?php
+	/*
+	 * Defines all functionality for checking and changing passwords, as well as logging in and out
+	 */
 	class Passwords extends CI_Model 
-	{		
+	{
+		/*
+		 * Returns true if the user has the correct log in permissions or has just posted the correct password, otherwise
+		 * shows the log in page
+		 * 
+		 * @param page - the current page. The controller should pass 'this' as this paramater
+		 * @param user_level - one of 'Doctor' or 'Admin' to determine which password should be compared against
+		 */			
 		function checkLogIn($page,$user_level)
 		{
 			session_start();
@@ -44,39 +54,50 @@
 				return true;		
 			}
 		}
-
+		
+		/*
+		 * Logs the user out
+		 */
 		function logOut()
 		{
 			session_start();
 			unset($_SESSION['Admin']);
 			unset($_SESSION['Doctor']);
 		}	
-				
-		function changeAdminPassword($old_password,$new_password)
-		{
-			return $this->changePassword($old_password,$new_password,'Admin');
-		}
 		
-		function changeDoctorPassword($old_password,$new_password)
-		{
-			return $this->changePassword($old_password,$new_password,'Doctor');
-		}
-		
+		/*
+		 * Encrypts the passsword for storage in the DB, or comparision to stored password in DB
+		 */
 		function encrypt($password)
 		{
 			return sha1($password);
 		}
 		
+		/*
+		 * Checks if the password entered is the correct admin password.
+		 * 
+		 * returns true if correct, an error message otherwise
+		 */
 		function checkAdminPassword($password)
 		{
 			return $this->checkPassword($password,'Admin');
 		}
 		
+		/*
+		 * Checks if the password entered is the correct doctor password.
+		 * 
+		 * returns true if correct, an error message otherwise
+		 */
 		function checkDoctorPassword($password)
 		{
 			return $this->checkPassword($password,'Doctor');
 		}
 		
+		/*
+		 * Checks if the password entered is the correct password for the specified user level
+		 * 
+		 * returns true if correct, an error message otherwise
+		 */
 		function checkPassword($password,$user_level)
 		{
 			$this->load->database();
@@ -93,6 +114,10 @@
 				}
 		}
 		
+		/*
+		 * Changes the password for the specified user level is $old_password if correct and 
+		 * the new passwords match. Returns true if password changed, an error message otherwise
+		 */
 		function changePassword($old_password,$new_password,$new_password_confirm,$user_level)
 		{
 			

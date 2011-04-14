@@ -1,7 +1,13 @@
 <?php
 
+	/**
+	 * Functions related to patients
+	 */
 	class Patient_session extends CI_Model 
 	{
+		/*
+		 * Returns true if the specified session_id is in the database for a patient 
+		 */	
 		public function validateSession($session_id){
 			try{
 			  $this->load->database();
@@ -16,7 +22,10 @@
 				return $ex;
 			}
 		}
-			
+		
+		/*
+		 * Retuns all details on the patient with the specified session id
+		 */	
 		public function getPatientDetails($session_id){
 			try{
 				$this->load->database();
@@ -42,6 +51,10 @@
 			
 		}
     
+	/*
+	 * Returns an array of data of all patients matching the searchString who would be on page $page
+	 * if each page contained $records_per_page patients, ordered newest added patient first
+	 */
     public function getMatchingPatients($searchString,$page,$records_per_page=10){
         $this->load->database();
         
@@ -67,6 +80,9 @@
         }       
     }
     
+	/*
+	 * Returns the number of patients matching the searchString
+	 */
     public function getMatchingPatientsCount($searchString)
     {
         $this->load->database();
@@ -87,6 +103,9 @@
         return $num_records;
     }
 		
+		/*
+		 * Inserts a patient's info into the database and generates a corresponding session unique identifier for this patient.
+		 */
 		public function generateSession($patient_health_params){
 			try{
 			   $this->load->database();
@@ -118,10 +137,9 @@
 			}
 		}
 		
-		/*public function updateSession($patient_health_params){
-		
-		}*/
-		
+		/**
+		 * Returns the percentages of life, death ect. for the patient with the corresponding session id
+		 */
 		public function getReport($session_id){
 			 $this->load->database();
 			 $points = array();
@@ -148,6 +166,9 @@
 			return $response;
 		}
 		
+		/*
+		 * Returns the health parameters from the DB
+		 */
 		public function getHealthParams(){
 			try{
 				$this->load->database();  
@@ -173,6 +194,9 @@
 			}
 		}
 		
+		/**
+		 * Returns session ids of matching patients
+		 */
 		public function getSessionIDs($search_str,$per_pg,$offset){
 			try{
 				$this->load->database();    
