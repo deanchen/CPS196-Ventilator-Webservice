@@ -1,7 +1,13 @@
 <?php
 
+	/**
+	 * Functions related to the survey
+	 */
 	class Survey extends CI_Model
 	{
+		/**
+		 * Returns DB id and title of each survey question group
+		 */	
 		public function getSurveyQuestionGroups(){
 			try{
 			  $this->load->database();
@@ -20,6 +26,9 @@
 			}
 		}
 		
+		/**
+		 * Changes the survey based on post_data
+		 */
 		public function updateSurvey($post_data)
 		{			
 			$deleteType = null;
@@ -130,6 +139,10 @@
 			}
 		}
 			
+		/**
+		 * Returns all survey questions in the specified quesiton group
+		 * and corresponding answers for the patient with session id
+		 */	
 		public function getSurveyQuestions($question_group_id,$session_id=null){
 			try{
 				 $this->load->database();
@@ -155,7 +168,10 @@
 				return $ex;
 			}
 		}
-			
+		
+		/**
+		 * Gets all questions data and answers for the patient with the specified session_id
+		 */	
 		public function getPatientSurveyData($session_id){
 			try{
 				   $this->load->database();
@@ -197,10 +213,10 @@
 			}		
 		}
 			
-		/*public function updatePatientSurveyData(patient_survey_data){
-			
-		}*/
-			
+		/**
+		 * Returns where the patient seems to be leaning for the patient with the specified
+		 * session id
+		 */
 		public function getSurveyReport($session_id){
 		  $this->load->database();
 			$res_points = $this->db->query("SELECT SO.points FROM tbl_patient_survey_data PSD
@@ -214,6 +230,9 @@
 			return $total_points;
 		}
 		
+		/**
+		 * Returns true iff the patient with the specified session id has completed the survey
+		 */
 		public function isSurveyCompleted($session_id){
 		  $this->load->database();
 			$res_survey = $this->db->query("SELECT survey_completed FROM tbl_patient_sessions 
@@ -225,6 +244,10 @@
 				return false;
 		}
 		
+		/**
+		 * Sets the answer to a question to selected_option_id for question with quesiton_id id and
+		 * for patient with corresponding session_id
+		 */
 		public function setSurveyResult($session_id,$question_id,$selected_option_id){
 		  $this->load->database();
 		  $res = $this->db->query("DELETE FROM tbl_patient_survey_data WHERE session_id='".$session_id."' AND question_id='".$question_id."'");
@@ -235,6 +258,9 @@
 		  return true;
 		}
 		
+		/**
+		 * Sets the survey as completed for the patient with the corresponding session_id
+		 */
 		public function setSurveyCompleted($session_id)
 		{
 		  $this->load->database();		
