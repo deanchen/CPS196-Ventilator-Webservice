@@ -1,5 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/*
+ * Controller for everything the doctor can do
+ */
 class Doctor extends CI_Controller {
 
 	function __construct()
@@ -7,6 +10,9 @@ class Doctor extends CI_Controller {
 		parent::__construct();
 	}
 
+	/*
+	 * Controller for the homepage for the doctor panel
+	 */
 	function index()
 	{
 		$this->load->model('passwords'); 	
@@ -16,6 +22,9 @@ class Doctor extends CI_Controller {
 		}
 	}
 	
+  /*
+   * Controller to view specific leanings of a patient's family 
+   */	
   function patient($sessionID)
   {
 	 $this->load->model('passwords'); 	
@@ -33,6 +42,9 @@ class Doctor extends CI_Controller {
 	 }
   }
   
+  /*
+   * Controller to allow doctor to see specific patient family's anwsers
+   */ 
   function patient_answers($sessionID)
   {
 	 $this->load->model('passwords');  	
@@ -84,6 +96,9 @@ class Doctor extends CI_Controller {
 	  }
   }
   
+  /*
+   * Controller for doctor to view all patients
+   */
   function view($page=1,$searchString=NULL)
   {
 	$this->load->model('passwords'); 
@@ -119,6 +134,9 @@ class Doctor extends CI_Controller {
      }
   }
   
+  /*
+   * Controller for doctor submitting patient data
+   */
   function submit()
   {
 	 $this->load->model('passwords'); 
