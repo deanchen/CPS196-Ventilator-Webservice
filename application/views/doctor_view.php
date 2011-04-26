@@ -9,6 +9,7 @@
 		?>
 		<link href="/<?php echo $subdir; ?>/css/styles.css" rel="stylesheet" type="text/css" />
 		<link rel="apple-touch-icon" href="/<?php echo $subdir; ?>/images/icon.jpg"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="format-detection" content="telephone=no">
 		<style>
 			.ieDiv {
@@ -147,7 +148,7 @@
 		echo '<tr>
 		<td valign="middle" align="left" class="rowFld' . $i . '">' . $record['name'] . '</td>
 		<td valign="middle" align="left" class="rowFld' . $i . '">' . $record['medical_record_no'] . '</td>
-		<td valign="middle" align="left" class="rowFld' . $i . '"><a href="/api/survey/?session_id=' . $record['session_id'] . '">Survey</a></td>
+		<td valign="middle" align="left" class="rowFld' . $i . '"><a href="#" onclick="window.location.href=\'/api/survey/?session_id=' . $record['session_id'] . '\'">Survey</a></td>
 		<td valign="middle" align="left" class="rowFld' . $i . '">';
 		if($record['survey_completed']) {
 			echo '<a href="/' . $subdir . '/doctor/patient/' . $record['session_id'] . '">Click to view survey result</a>';

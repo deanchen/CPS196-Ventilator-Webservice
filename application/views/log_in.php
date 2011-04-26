@@ -5,6 +5,8 @@
 			#$subdir = $request_url[1];
 			$subdir = "api";
 		?>
+<title>PMV Decision Login</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
 		<link rel="apple-touch-icon" href="/<?php echo $subdir; ?>/images/icon.jpg"/>
 		</head>
 <body>

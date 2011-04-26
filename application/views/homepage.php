@@ -10,6 +10,7 @@
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <link rel="apple-touch-icon" href="images/icon.jpg"/>
 
+<meta name="apple-mobile-web-app-capable" content="yes">
 <style>
 
 .ieDiv{
